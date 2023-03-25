@@ -32,13 +32,26 @@ export let Patienthome = (props) => {
     const [doc, setDoc] = useState([]);
     console.log(doc);
 
+    const [apmt, setApmt] = useState([]);
+    const [doctor, setDoctor] = useState([]);
+    console.log(doctor);
+
     useEffect(() => {
         getDoc();
-    });
+        getApmt();
+    }, []);
 
     const getDoc = async () => {
         const result = await axios.get(props.p + `/getAllDoctor`);
         setDoc(result.data);
+    }
+
+    const getApmt = async () => {
+
+        const result = await axios.get(props.p + `/getApmtByPid?pid=${uid["pid"]["pid"]}`);
+        console.log(result.data);
+
+        setApmt(result.data);
     }
 
     const navigate = useNavigate();
@@ -57,10 +70,6 @@ export let Patienthome = (props) => {
     const st2 = "btn btn-dark btn-lg mt-3 mb-3";
     const [buthold, setButhold] = useState(st1)
     const [page, setPage] = useState(<History u={uid["uid"]} p={props.p}></History>);
-
-    const [apmt, setApmt] = useState([]);
-    const [doctor, setDoctor] = useState([]);
-    console.log(doctor);
 
     const togglebut = () => {
         setPage();
@@ -81,18 +90,7 @@ export let Patienthome = (props) => {
         return time;
     }
 
-    useEffect(() => {
-        getApmt();
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
-
-    const getApmt = async () => {
-
-        const result = await axios.get(props.p + `/getApmtByPid?pid=${uid["pid"]["pid"]}`);
-        console.log(result.data);
-
-        setApmt(result.data);
-    }
+    
     const getDoctor = async (did) => {
         console.log("did is " + did);
         const result = await axios.get(props.p + `/getDoctorByDid?did=${did}`);

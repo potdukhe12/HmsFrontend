@@ -12,9 +12,9 @@ export let Login = (props) => {
 
   const navigate = useNavigate();
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async(event) => {
     event.preventDefault();
-    axios
+    await axios
       .post(props.p + "/checkLogin", { 
         uname, 
         pwd 
