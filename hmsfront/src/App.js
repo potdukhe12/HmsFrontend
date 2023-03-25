@@ -20,7 +20,7 @@ import { Aboutus } from './components/common/Aboutus';
 
 function App() {
 
-  const path = "http://172.31.32.23:8080";
+  const path = "http://13.233.197.160:8080";
   return (
     <div className="App">
 
