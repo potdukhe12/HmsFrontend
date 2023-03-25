@@ -1,10 +1,10 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 
 export let Medservs = (props) => {
 
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
     const [ms , setMs] = useState([]);
 
 

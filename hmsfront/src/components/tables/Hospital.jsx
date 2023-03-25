@@ -20,7 +20,7 @@ export let Hospital = (props) => {
 
     const [page, setPage] = useState();
 
-    const [isopen, setIsopen] = useState("close");
+    // const [isopen, setIsopen] = useState("close");
 
 
     // const navigate = useNavigate();

@@ -1,12 +1,12 @@
 import hosimg from "../../img/doctors.avif"
-import { useLocation, useNavigate } from "react-router-dom";
-import { Navig } from "../common/Navig";
+// import { useLocation, useNavigate } from "react-router-dom";
+// import { Navig } from "../common/Navig";
 
 export let Patient = (props) => {
 
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
 
-    const location = useLocation();
+    // const location = useLocation();
     const pat = props.ptt;
 
     console.log("hello patient!");

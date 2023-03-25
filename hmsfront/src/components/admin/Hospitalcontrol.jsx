@@ -2,7 +2,7 @@ import hosimg from "../../img/hospital.jpg"
 import { useLocation, useNavigate } from "react-router-dom";
 import { Navig } from "../common/Navig";
 import { useState } from "react";
-import { TreatmentsOfHospital, TreatmentsOfHospitalcnt } from "./Treatmentscnt";
+import { TreatmentsOfHospitalcnt } from "./Treatmentscnt";
 
 import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 import { DoctorsOfHospital } from "../tables/Doctors";
@@ -21,7 +21,7 @@ export let Hospitalcontrol = (props) => {
 
     const [page, setPage] = useState();
 
-    const [isopen, setIsopen] = useState("close");
+    // const [isopen, setIsopen] = useState("close");
 
 
     // const navigate = useNavigate();

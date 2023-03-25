@@ -45,7 +45,7 @@ export let Hospitalhome = (props) => {
     useEffect(() => {
         getDoc();
         getApmt();
-    }, []);
+    });
 
     const getDoc = async () => {
         const result = await axios.get(props.p + `/getDoctorByHid?hid=${uid["hid"]["hid"]}`);

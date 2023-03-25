@@ -34,7 +34,7 @@ export let Patienthome = (props) => {
 
     useEffect(() => {
         getDoc();
-    }, []);
+    });
 
     const getDoc = async () => {
         const result = await axios.get(props.p + `/getAllDoctor`);
@@ -60,6 +60,7 @@ export let Patienthome = (props) => {
 
     const [apmt, setApmt] = useState([]);
     const [doctor, setDoctor] = useState([]);
+    console.log(doctor);
 
     const togglebut = () => {
         setPage();

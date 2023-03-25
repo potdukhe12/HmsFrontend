@@ -6,8 +6,6 @@ import axios from "axios";
 import timg from "../../img/treatment.jpg"
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Addappointment } from "../workings/Addappointment";
-// import { Addappointment } from "../workings/Addappointment";
 
 let count = 0;
 export let Treatment = (props) => {
@@ -17,12 +15,10 @@ export let Treatment = (props) => {
     const treat = location.state || {};
 
     const [datetime, setDateTime] = useState();
-    // console.log(treat);
-    // console.log(treat["treat"]["tname"]);
     const [togval, setTogval] = useState("collapse");
     const [togdiv, setTogdiv] = useState("d-grid gap-2");
     const [dataset, setDataset] = useState();
-    const [page, setPage] = useState();
+    // const [page, setPage] = useState();
 
     const toggleSection = () => {
         if (count % 2 === 0) {
@@ -108,9 +104,9 @@ export let Treatment = (props) => {
                     </div>
                 </div>
                 <button type="button" class="btn btn-primary mt-3" onClick={() => {navigate(-1)}}>Back</button>
-                <div>
+                {/* <div>
                     {page}
-                </div>
+                </div> */}
             </div>
         </div>
     )

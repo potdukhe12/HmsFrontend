@@ -5,7 +5,7 @@ import timg from "../../img/treatment.jpg"
 import { useNavigate } from "react-router-dom";
 
 
-let count = 0;
+// let count = 0;
 export let Treatmentcontrol = (props) => {
 
     const navigate = useNavigate();

@@ -1,15 +1,13 @@
 import axios from "axios";
-import React, { useState, useEffect } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import React, { useEffect } from "react";
+// import { useNavigate } from "react-router-dom";
 
 export let Addappointment = (props) => {
-
-    const navigate = useNavigate();
     
     useEffect(() => {
+        postApmt()
         console.log("I'm here");
         console.log(props.ds);
-        postApmt();
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 

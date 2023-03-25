@@ -1,7 +1,7 @@
 import bgimg from "../../img/bg7.jpg";
 import userdp from "../../img/admin.jpg"
 import { Navig } from "../common/Navig";
-import { BsFillPencilFill, BsSave, BsEnvelope, BsPhone, BsXSquare } from "react-icons/bs";
+import { BsFillPencilFill, BsEnvelope, BsPhone, BsXSquare } from "react-icons/bs";
 import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 
 import axios from "axios";
@@ -27,12 +27,12 @@ export let Adminhome = (props) => {
     // console.log(admin["aid"]);
     const [prof, setProf] = useState("col-7");
     const [updt, setUpdt] = useState("collapse");
-    const [but, setBut] = useState("button");
+    // const [but, setBut] = useState("button");
     const [icon, setIcon] = useState(<BsFillPencilFill></BsFillPencilFill>);
-    const st1 = "btn btn-outline-dark btn-lg mt-3 mb-3";
-    const st2 = "btn btn-dark btn-lg mt-3 mb-3";
-    const [buthold, setButhold] = useState(st1)
-    const [page, setPage] = useState();
+    // const st1 = "btn btn-outline-dark btn-lg mt-3 mb-3";
+    // const st2 = "btn btn-dark btn-lg mt-3 mb-3";
+    // const [buthold, setButhold] = useState(st1)
+    // const [page, setPage] = useState();
     const [hosp, setHosp] = useState({});
 
     const [vis, setVis] = useState("collapse");
@@ -216,9 +216,9 @@ export let Adminhome = (props) => {
 
 
                     <div className="row pt-3">
-                        <div>
+                        {/* <div>
                             {page}
-                        </div>
+                        </div> */}
                     </div>
 
 
