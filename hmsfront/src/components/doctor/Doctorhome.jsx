@@ -23,7 +23,7 @@ export let Doctorhome = (props) => {
     var ageDate = new Date(ageDifMs); // miliseconds from epoch
     const age = Math.abs(ageDate.getUTCFullYear() - 1970);
 
-    const [prof, setProf] = useState("col-8");
+    const [prof, setProf] = useState("col-md-8");
     const [updt, setUpdt] = useState("collapse");
     const [icon, setIcon] = useState(<BsFillPencilFill></BsFillPencilFill>);
 
@@ -70,21 +70,35 @@ export let Doctorhome = (props) => {
     return (
         <div>
             <Navig></Navig>
-            <div style={{ backgroundImage: `url(${bgimg})`, height: "80vh", backgroundRepeat: "no-repeat", backgroundSize: "cover" }}>
-                <div>
+            <div style={{ 
+                backgroundImage: `url(${bgimg})`, 
+                backgroundRepeat: "no-repeat", 
+                backgroundSize: "cover",
+                position: "relative"
+                }}>
+                <div 
+                    style={{ 
+                    position: "absolute",
+                    top: 0,
+                    left: 0,
+                    right: 0,
+                    bottom: 0,
+                    backgroundColor: "rgba(0, 0, 0, 0.3)", // adjust opacity here
+                    }} 
+                >
 
                 </div>
                 <div className="container-fluid">
                     <div className="row">
-                        <div className="col-1">
+                        <div className="col-md-1">
                         </div>
-                        <div className="col-6" style={{padding:"0 50px 0 0px"}}>
+                        <div className="col-md-6" style={{padding:"0 3% 0 3%"}}>
                             <form action="" method="get">
                                 <div className="card mt-5">
 
                                     <div className="container-fluid">
                                         <div className="row shadow">
-                                            <div className="col-4">
+                                            <div className="col-md-4">
                                                 <div className="mt-3">
                                                     <img src={uid["did"]["gender"] === "Male" ? userdpmale : userdpfemale} className="img-fluid rounded-top bg-light" alt="userdp" />
                                                     <h3 className="mt-3 text-dark">{uid["did"]["dname"]}</h3>
@@ -92,13 +106,11 @@ export let Doctorhome = (props) => {
                                                     <br />
 
                                                     <button type="button" className="btn btn-outline-dark pb-2 mb-5" onClick={() => {
-                                                        if (prof === "col-8") {
-                                                            setIcon(<BsXSquare></BsXSquare>); setProf("collapse"); setUpdt("col-8");
-
-
+                                                        if (prof === "col-md-8") {
+                                                            setIcon(<BsXSquare></BsXSquare>); setProf("collapse"); setUpdt("col-md-8");
                                                         }
                                                         else {
-                                                            setIcon(<BsFillPencilFill></BsFillPencilFill>); setProf("col-8"); setUpdt("collapse");
+                                                            setIcon(<BsFillPencilFill></BsFillPencilFill>); setProf("col-md-8"); setUpdt("collapse");
                                                         }
                                                     }}>{icon}</button>
 
@@ -142,14 +154,12 @@ export let Doctorhome = (props) => {
                                                                     <p>Experience:</p>
                                                                 </div>
                                                                 <div className="col">
-                                                                    <p style={{ textAlign: "center" }}><strong><em>{uid["did"]["experience"]} Years</em></strong></p>
+                                                                    <p><strong><em>{uid["did"]["experience"]} Yrs</em></strong></p>
                                                                 </div>
-                                                            </div>
-                                                            <div className="row">
-                                                                <div className="col-4">
+                                                                <div className="col-5">
                                                                     <p>Specialization:</p>
                                                                 </div>
-                                                                <div className="col-3">
+                                                                <div className="col-4">
                                                                     <p><strong><em>{uid["did"]["specialization"]}</em></strong></p>
                                                                 </div>
                                                             </div>
@@ -161,11 +171,11 @@ export let Doctorhome = (props) => {
                                                             <div className="row">
                                                                 <div className="col">
                                                                     <p><BsPhone></BsPhone>&ensp;Mobile No.:</p>
-                                                                    <p style={{ textAlign: "center" }}><strong><em>{uid["did"]["mobno"]}</em></strong></p>
+                                                                    <p><BsEnvelope></BsEnvelope>&ensp;E-Mail:</p>
                                                                 </div>
                                                                 <div className="col">
-                                                                    <p><BsEnvelope></BsEnvelope>&ensp;E-Mail:</p>
-                                                                    <p style={{ textAlign: "center" }}><strong><em>{uid["did"]["user"]["email"]}</em></strong></p>
+                                                                    <p><strong><em>{uid["did"]["mobno"]}</em></strong></p>
+                                                                    <p><strong><em>{uid["did"]["user"]["email"]}</em></strong></p>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -196,12 +206,11 @@ export let Doctorhome = (props) => {
                                 </div>
                             </form>
                         </div>
-                        <div className="col-4 rounded bg-white mt-5 shadow">
-
+                        <div className="col-md-4" style={{padding:"0 1% 0 1%"}}>
+                          <div className="rounded bg-white mt-5 shadow">
                             <div className="mt-3">
                                 <div className="card mb-3" >
                                     <div className="card-body" >
-
                                         <h4 className="card-title">Current Appointments <BsCalendarEvent></BsCalendarEvent></h4>
                                     </div>
                                     <ul className="list-group list-group-flush" style={{ maxHeight: "380px", overflowY: "scroll" }}>
@@ -229,8 +238,9 @@ export let Doctorhome = (props) => {
                                     </ul>
                                 </div>
                             </div>
+                          </div>
                         </div>
-                        <div className="col-1">
+                        <div className="col-md-1">
                         </div>
                     </div>
                     <br />
@@ -243,15 +253,15 @@ export let Doctorhome = (props) => {
         </>
     ) : (
         <>
-                    <div style={{ height: "700px", overflowY: "scroll", padding:"0 120px 0px 120px" }}>
-                        {page2}
-                        {page}
-                    </div>
+            <div style={{ height: "700px", padding:"0 2% 0px 2%"}}>
+                {page2}
+                <br></br><br></br>
+                {page}
+            </div>
         </>
     )}
                     <div  ref={line1Ref}>
                     </div>
-
                 </div>
             </div>
         </div>

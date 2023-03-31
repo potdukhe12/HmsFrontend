@@ -268,15 +268,15 @@ const [admin, setAdmin] = useState({
 
     return (
         <div>
-            <Navig></Navig>
-            <div style={{backgroundImage: `url(${bgimg})`, height: "95vh", backgroundRepeat:"no-repeat",backgroundSize:"contain"}}>
+            <Navig isSignup={true}></Navig>
+            <div style={{backgroundImage: `url(${bgimg})`, height: "95vh", backgroundRepeat:"no-repeat",backgroundSize:"cover"}}>
 
             <br />
                 <div className="container">
                     <div className="row">
-                        <div className="col-6">
+                        <div className="col-md-6">
                         </div>
-                        <div className="col-6 border border-primary rounded bg-white" style={{widows:"70vh"}}>
+                        <div className="col-md-6 border border-primary rounded bg-white" style={{width:"365px", margin:"0 2% 0 2%"}}>
                             
                             <h1 className="text-primary" style={{margin: "10px"}}><strong>Sign Up</strong></h1>
                             <hr style={{color: "green"}}/>
@@ -287,7 +287,7 @@ const [admin, setAdmin] = useState({
         <form onSubmit={handlePatientSubmit}>
           <div className="row">
             <div className="col-7">
-              <h2>Patient Form</h2>
+              <h4>Patient Details</h4>
             </div>
             <div className="col-5">
                 <h4>UID: {uid}</h4>
@@ -349,7 +349,6 @@ const [admin, setAdmin] = useState({
                                 style={{textAlign:"center"}} class="form-control form-select" 
                                 value={patient.gender} 
                                 onChange={handleChange2}>
-                        <option>Select &ensp;&ensp;</option>
                         <option value="Male">Male &ensp;&ensp;</option>
                         <option value="Female">Female &ensp;&ensp;</option>
                     </select>
@@ -388,7 +387,7 @@ const [admin, setAdmin] = useState({
     <form onSubmit={handleDoctorSubmit}>
         <div className="row">
             <div className="col-7">
-              <h2>Doctor Form</h2>
+              <h4>Doctor Details</h4>
             </div>
             <div className="col-5">
                 <h4>UID: {uid}</h4>
@@ -473,7 +472,6 @@ const [admin, setAdmin] = useState({
                                 style={{textAlign:"center"}} class="form-control form-select" 
                                 value={doctor.gender} 
                                 onChange={handleChange3}>
-                        <option>Select &ensp;&ensp;</option>
                         <option value="Male">Male &ensp;&ensp;</option>
                         <option value="Female">Female &ensp;&ensp;</option>
                     </select>
@@ -556,7 +554,7 @@ const [admin, setAdmin] = useState({
 <form onSubmit={handleHospitalSubmit}>
         <div className="row">
             <div className="col-7">
-              <h2>Hospital Form</h2>
+              <h4>Hospital Details</h4>
             </div>
             <div className="col-5">
                 <h4>UID: {uid}</h4>
@@ -629,7 +627,7 @@ const [admin, setAdmin] = useState({
 <form onSubmit={handleAdminSubmit}>
         <div className="row">
             <div className="col-7">
-              <h2>Admin Form</h2>
+              <h4>Admin Details</h4>
             </div>
             <div className="col-5">
                 <h4>UID: {uid}</h4>
@@ -684,7 +682,7 @@ const [admin, setAdmin] = useState({
     <>
 
         <form onSubmit={handleRegisterSubmit}>
-            <h2>Registration Form</h2>
+            <h4>User details</h4>
             <br/>
             {invalid && <p>Username or password already in use!</p>} 
                 <div className="row">
@@ -699,16 +697,15 @@ const [admin, setAdmin] = useState({
                         />
                     </div>
                     <div className="col-2">
-                            <label htmlFor="role" >&ensp;Role:</label>
+                        <label htmlFor="role" >&ensp;Role:</label>
                     </div>
                     <div className="col-4">
-                            <select id="role" name="role" style={{textAlign:"center"}} class="form-control form-select" value={user.role} onChange={handleChange}>
-                                <option>Select &ensp;&ensp;</option>
-                                <option value="1">Patient &ensp;&ensp;</option>
-                                <option value="2">Doctor &ensp;&ensp;</option>
-                                <option value="3">Hospital &ensp;&ensp;</option>
-                                <option value="4">Admin &ensp;&ensp;</option>
-                            </select>
+                        <select id="role" name="role" style={{textAlign:"center"}} class="form-control form-select" value={user.role} onChange={handleChange}>
+                            <option value="1">Patient &ensp;&ensp;</option>
+                            <option value="2">Doctor &ensp;&ensp;</option>
+                            <option value="3">Hospital &ensp;&ensp;</option>
+                            <option value="4">Admin &ensp;&ensp;</option>
+                        </select>
                     </div>
                   <div className="mb-3">
                   </div>
@@ -773,10 +770,10 @@ const [admin, setAdmin] = useState({
                 </div>
                 <div className="row">
                     <div className="col" style={{textAlign:"center"}}>
-                  <button type="submit" className="btn btn-primary mb-3" style={{padding: "7px 40px 7px 40px"}}>Submit</button>
+                  <button type="submit" className="btn btn-primary mb-3" style={{padding: "7px 40px 7px 40px"}}>Next</button>
                     </div>
                   <div className="col" style={{textAlign:"center"}}>
-                  <button type="reset" className="btn btn-primary mb-3" style={{padding: "7px 50px 7px 50px"}}>Clear</button>
+                  <button type="reset" className="btn btn-primary mb-3" onClick={()=>{setInvalid("")}} style={{padding: "7px 50px 7px 50px"}}>Clear</button>
                     </div>
                 </div>
           </form>

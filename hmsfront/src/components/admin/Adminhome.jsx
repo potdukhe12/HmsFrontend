@@ -25,7 +25,7 @@ export let Adminhome = (props) => {
     // console.log("logging");
     // console.log(admin["uid"]);
     // console.log(admin["aid"]);
-    const [prof, setProf] = useState("col-7");
+    const [prof, setProf] = useState("col-md-7");
     const [updt, setUpdt] = useState("collapse");
     // const [but, setBut] = useState("button");
     const [icon, setIcon] = useState(<BsFillPencilFill></BsFillPencilFill>);
@@ -44,7 +44,6 @@ export let Adminhome = (props) => {
     const [disval, setDisval] = useState("");
     const [butval, setButval] = useState("");
 
-
     useEffect(() => {
         getHos();
         // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -62,33 +61,33 @@ export let Adminhome = (props) => {
     return (
         <div>
             <Navig></Navig>
-            <div style={{ backgroundImage: `url(${bgimg})`, height: "78vh", backgroundRepeat: "no-repeat", backgroundSize: "cover" }}>
+            <div style={{ backgroundImage: `url(${bgimg})`, backgroundRepeat: "no-repeat", backgroundSize: "cover", position: "relative" }}>
                 <div>
 
                 </div>
                 <div className="container-fluid">
                     <div className="row">
-                        <div className="col-1">
+                        <div className="col-md-1">
                         </div>
-                        <div className="col-6" style={{padding:"0 50px 0 0"}}>
+                        <div className="col-md-6" style={{padding:"0 5% 0 5%"}}>
                             <form action="" method="get">
                                 <div className="card mt-5 bg-light-gradient shadow">
 
                                     <div className="container-fluid">
                                         <div className="row shadow">
-                                            <div className="col-5">
+                                            <div className="col-md-5">
                                                     <img src={userdp} className="img-fluid rounded-top bg-light" alt="userdp" />
                                                     <h3 className="text-dark">{admin["aid"]["aname"]}</h3>
                                                     <h5 className="text-muted">Admin</h5>
                                                     {/* <br /> */}
                                                     <button type="button" className="btn btn-outline-dark pb-2 mb-4" onClick={() => {
-                                                        if (prof === "col-7") {
-                                                            setIcon(<BsXSquare></BsXSquare>); setProf("collapse"); setUpdt("col-7");
+                                                        if (prof === "col-md-7") {
+                                                            setIcon(<BsXSquare></BsXSquare>); setProf("collapse"); setUpdt("col-md-7");
 
 
                                                         }
                                                         else {
-                                                            setIcon(<BsFillPencilFill></BsFillPencilFill>); setProf("col-7"); setUpdt("collapse");
+                                                            setIcon(<BsFillPencilFill></BsFillPencilFill>); setProf("col-md-7"); setUpdt("collapse");
                                                         }
                                                     }}>{icon}</button>
 
@@ -101,19 +100,15 @@ export let Adminhome = (props) => {
                                                         <hr className="mt-1" />
                                                         <div style={{ textAlign: "left" }}>
                                                             <div className="row">
-                                                                <div className="col-4">
-                                                                    <p><BsPhone></BsPhone>&ensp;Mob. No.:</p>
-                                                                </div>
                                                                 <div className="col">
-                                                                    <p><strong><em>{admin["aid"]["mobno"]}</em></strong></p>
+                                                                    <p><BsPhone></BsPhone>&ensp;Mob. No.:</p>
+                                                                    <p style={{ textAlign: "right" }}><strong><em>{admin["aid"]["mobno"]}</em></strong></p>
                                                                 </div>
                                                             </div>
                                                             <div className="row">
-                                                                <div className="col-4">
-                                                                    <p><BsEnvelope></BsEnvelope>&ensp;E-Mail:</p>
-                                                                </div>
                                                                 <div className="col">
-                                                                    <p><strong><em>{admin["aid"]["user"]["email"]}</em></strong></p>
+                                                                    <p><BsEnvelope></BsEnvelope>&ensp;E-Mail:</p>
+                                                                    <p style={{ textAlign: "right" }}><strong><em>{admin["aid"]["user"]["email"]}</em></strong></p>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -122,7 +117,7 @@ export let Adminhome = (props) => {
                                                         <hr className="mt-1" />
                                                         <div style={{ textAlign: "left" }}>
                                                             <div className="row">
-                                                                <div className="col-4">
+                                                                <div className="col">
                                                                     <p>Address:</p>
                                                                 </div>
                                                                 <div className="col">
@@ -145,8 +140,8 @@ export let Adminhome = (props) => {
                             </form>
                         </div>
 
-                        <div className="col-4">
-                            <div className="rounded bg-white mt-5 shadow" style={{ minHeight: "410px"}}>
+                        <div className="col-md-4">
+                            <div className="rounded bg-white mt-5 shadow" style={{ minHeight: "400px"}}>
                                 <h1 style={{padding:"10px 0 0 0"}}>Hospitals</h1>
                                 <hr />
                                 <div className="d-flex m-3">
@@ -172,7 +167,6 @@ export let Adminhome = (props) => {
                                     </Dropdown>
                                 </div>
                                 <div className={vis}>
-                                    <hr />
                                     <div class="card border-dark m-3">
                                         <div class="card-body">
                                             <div class="container-fluid">
@@ -207,22 +201,20 @@ export let Adminhome = (props) => {
                                     </div>
                                 </div>
                             </div>
-                            <div className="col-1">
+                            <div className="col-md-1">
 
                             </div>
                         </div>
                     </div>
                     <br />
-
-
                     <div className="row pt-3">
                         {/* <div>
                             {page}
                         </div> */}
                     </div>
-
-
                 </div>
+            <div style={{height:"180px"}}>
+            </div>
             </div>
         </div>
     );

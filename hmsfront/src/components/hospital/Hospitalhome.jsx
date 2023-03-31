@@ -21,7 +21,7 @@ export let Hospitalhome = (props) => {
     const location = useLocation();
     const uid = location.state || {};
 
-    const [prof, setProf] = useState("col-8");
+    const [prof, setProf] = useState("col-md-8");
     const [updt, setUpdt] = useState("collapse");
     const [icon, setIcon] = useState(<BsFillPencilFill></BsFillPencilFill>);
 
@@ -63,33 +63,33 @@ export let Hospitalhome = (props) => {
     return (
         <div>
             <Navig></Navig>
-            <div style={{ backgroundImage: `url(${bgimg})`, height: "80vh", backgroundRepeat: "no-repeat", backgroundSize: "cover" }}>
+            <div style={{ backgroundImage: `url(${bgimg})`, backgroundRepeat: "no-repeat", backgroundSize: "cover", position: "relative"  }}>
                 <div className="container-fluid" >{/* style={{width:"1500px", overflowX: "scroll"}} */}
                     <div className="row">
-                        <div className="col-1">
+                        <div className="col-md-1">
                         </div>
-                        <div className="col-6" style={{padding:"0 50px 0 50px"}}>
+                        <div className="col-md-6" style={{padding:"0 5% 0 5%"}}>
                             <form action="" method="get">
                                 <div className="card mt-5">
-                                    <div className="container-fluid" style={{height: "445px", overflowY: "scroll"}}>
+                                    <div className="container-fluid">
                                         <div className="row shadow">
-                                            <div className="col-4">
+                                            <div className="col-md-4">
                                                 <div className="mt-3">
                                                     <img src={userdp} className="img-fluid rounded-top bg-light" alt="userdp" />
                                                     <h3 className="mt-3 text-dark">{uid["hid"]["hname"]}</h3>
                                                     <h5 className="text-muted">Hospital</h5>
                                                     <br />
-                                                    <button type="button" className="btn btn-outline-dark pb-2 mb-5" onClick={() => {
-                                                        if (prof === "col-8") {
-                                                            setIcon(<BsXSquare></BsXSquare>); setProf("collapse"); setUpdt("col-8");
+                                                    <button type="button" className="btn btn-outline-dark pb-2 mb-4" onClick={() => {
+                                                        if (prof === "col-md-8") {
+                                                            setIcon(<BsXSquare></BsXSquare>); setProf("collapse"); setUpdt("col-md-8");
                                                         }
                                                         else {
-                                                            setIcon(<BsFillPencilFill></BsFillPencilFill>); setProf("col-8"); setUpdt("collapse");
+                                                            setIcon(<BsFillPencilFill></BsFillPencilFill>); setProf("col-md-8"); setUpdt("collapse");
                                                         }
                                                     }}>{icon}</button>
                                                 </div>
                                             </div>
-                                            <div className={prof}  style={{padding:"20px 0 0px 0"}}>
+                                            <div className={prof}  style={{padding:"15px 0 5px 10px"}}>
                                                 <div className="card-body">
                                                     <h4 className="card-title"><strong>Profile</strong></h4>
                                                     <div className="text-left">
@@ -97,7 +97,7 @@ export let Hospitalhome = (props) => {
                                                         <hr className="mt-1" />
                                                         <div style={{ textAlign: "left" }}>
                                                             <div className="row">
-                                                                <div className="col-4">
+                                                                <div className="col-md-5">
                                                                     <p><BsPhone></BsPhone>&ensp;Contact No.:</p>
                                                                 </div>
                                                                 <div className="col">
@@ -105,7 +105,7 @@ export let Hospitalhome = (props) => {
                                                                 </div>
                                                             </div>
                                                             <div className="row">
-                                                                <div className="col-4">
+                                                                <div className="col-md-4">
                                                                     <p><BsEnvelope></BsEnvelope>&ensp;E-Mail:</p>
                                                                 </div>
                                                                 <div className="col">
@@ -118,7 +118,7 @@ export let Hospitalhome = (props) => {
                                                         <hr className="mt-1" />
                                                         <div style={{ textAlign: "left" }}>
                                                             <div className="row">
-                                                                <div className="col-4">
+                                                                <div className="col-md-4">
                                                                     <p>Address:</p>
                                                                 </div>
                                                                 <div className="col">
@@ -137,13 +137,13 @@ export let Hospitalhome = (props) => {
                                 </div>
                             </form>
                         </div>
-                        <div className="col-4" style={{padding:"0 50px 0 40px"}}>
+                        <div className="col-md-4" style={{padding:"0 3% 0 3%"}}>
                           <div className="rounded bg-white shadow" >
                                 <div className="card mt-5" >
                                     <div className="card-body">
                                         <h4 className="card-title">Working Doctors <BsFileEarmarkMedical></BsFileEarmarkMedical></h4>
                                     </div>
-                                    <div style={{ height: "375px", overflowY: "scroll" }}>
+                                    <div style={{ maxHeight: "375px", overflowY: "scroll" }}>
                                         <ListGroup className="m-2">
                                             {
                                                 doc.map((d) => (
@@ -184,16 +184,16 @@ export let Hospitalhome = (props) => {
                                 </div>
                           </div>
                         </div>
-                        <div className="col-1">
+                        <div className="col-md-1">
 
                         </div>
                     </div>
-                    <br /><br /><br /><br /><br />
+                    <br /><br /><br />
 
-                    <div className="row" style={{padding:"0 150px 0 150px",height:"600px"}}>
+                    <div className="row" style={{padding:"0 5% 10% 5%",maxHeight:"700px"}}>
                         
                         <div>
-                            <h1 className="text-dark" style={{ textAlign: "left", marginLeft: "50px" }}><strong>Appointments</strong></h1>
+                            <h1 className="text-dark" style={{ textAlign: "left", marginLeft: "7%" }}><strong>Appointments</strong></h1>
                             <hr className="border-light border" />
                             <div>
                                 <div class="table-responsive rounded">
@@ -231,6 +231,7 @@ export let Hospitalhome = (props) => {
                                         <tfoot>
 
                                         </tfoot>
+                                        <br/><br/>
                                     </table>
                                 </div>
                             </div>

@@ -39,9 +39,12 @@ export let Treatments = (props) => {
         <div>
             <h1><strong>Treatments</strong></h1>
             <div className="p-3">
-                <div className="table-hover rounded shadow">
-                    <table className="table table-light border">
-                        <thead>
+                <div className="table-responsive">
+                    <table className="table table-striped
+                    table-hover	
+                    table-borderless
+                    align-middle">
+                        <thead className="table-dark">
                             <tr>
                                 {/* <th className="col-1" scope="col">Treatment ID</th> */}
                                 <th className="col-3" scope="col">Treatment</th>

@@ -38,8 +38,8 @@ export let History = (props) => {
         <div>
             <h1><strong>Treatment History</strong></h1>
             <div className="p-3">
-                <div className="table-hover rounded shadow">
-                    <table className="table table-light border">
+                <div className="table-responsive">
+                    <table className="table table-light border table-hover">
                         <thead>
                             <tr>
                                 <th className="col-3" scope="col">Treatment</th>

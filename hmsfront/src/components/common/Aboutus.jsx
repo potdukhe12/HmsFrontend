@@ -1,6 +1,8 @@
 import React, { useRef } from 'react';
 import { Navig } from "../common/Navig";
 import bgimg from "../../img/AboutUs.png";
+import bgimg2 from "../../img/bg3.jpg";
+import bgimg3 from "../../img/bg8.jpg";
 import Footer from "../common/Footer";
 
 import saurabh from "../../img/saurabh.jpg";
@@ -8,6 +10,9 @@ import atharv from "../../img/atharv.jpeg";
 import ajay from "../../img/ajay.jpeg";
 import gaurav from "../../img/gaurav.jpeg";
 import img1 from "../../img/img1.jpg";
+
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 
 export let Aboutus = () => {
 
@@ -26,48 +31,48 @@ export let Aboutus = () => {
     return (
     <div>
         <div style={{backgroundImage: `url(${bgimg})`, height: "45vh", backgroundRepeat:"no-repeat",backgroundSize:"cover"}}>
-            <Navig></Navig>
+            <Navig isAboutus={true}></Navig>
         </div>
         
         <div>
             <nav className="navbar navbar-expand-lg bg-light shadow-lg">
                 <div className="container">
 
-                    <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false">
+                    <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav1" aria-controls="navbarNav1" aria-expanded="false">
                         <span className="navbar-toggler-icon"></span>
                     </button>
 
-                    <div className="collapse navbar-collapse" id="navbarNav">
+                    <div className="collapse navbar-collapse" id="navbarNav1">
                         <ul className="navbar-nav mx-auto">
                             <li className="nav-item" onClick={() => scrollToRef(line1Ref)} 
                                 style={{ color: 'grey' }}
                                 onMouseOver={(e) => {e.target.style.color = 'black'}}
                                 onMouseOut={(e) => e.target.style.color = 'grey'}>
-                                    <h4>&ensp;&ensp;&ensp;Our Idea</h4>
+                                    <h4>&ensp;&ensp;Our Idea&ensp;&ensp;</h4>
                             </li>
                             <li className="nav-item" onClick={() => scrollToRef(line2Ref)} 
                                 style={{ color: 'grey' }}
                                 onMouseOver={(e) => {e.target.style.color = 'black'}}
                                 onMouseOut={(e) => e.target.style.color = 'grey'}>
-                                    <h4>&ensp;&ensp;&ensp;Team Members</h4>
+                                    <h4>&ensp;&ensp;Team Members&ensp;&ensp;</h4>
                             </li>
                             <li className="nav-item" onClick={() => scrollToRef(line3Ref)} 
                                 style={{ color: 'grey' }}
                                 onMouseOver={(e) => {e.target.style.color = 'black'}}
                                 onMouseOut={(e) => e.target.style.color = 'grey'}>
-                                    <h4>&ensp;&ensp;&ensp;Our Guides</h4>
+                                    <h4>&ensp;&ensp;Our Guides&ensp;&ensp;</h4>
                             </li>
                             <li className="nav-item" onClick={() => scrollToRef(line4Ref)} 
                                 style={{ color: 'grey' }}
                                 onMouseOver={(e) => {e.target.style.color = 'black'}}
                                 onMouseOut={(e) => e.target.style.color = 'grey'}>
-                                    <h4>&ensp;&ensp;&ensp;Future Scope</h4>
+                                    <h4>&ensp;&ensp;Future Scope&ensp;&ensp;</h4>
                             </li>
                             <li className="nav-item" onClick={() => scrollToRef(line5Ref)} 
                                 style={{ color: 'grey' }}
                                 onMouseOver={(e) => {e.target.style.color = 'black'}}
                                 onMouseOut={(e) => e.target.style.color = 'grey'}>
-                                    <h4>&ensp;&ensp;&ensp;Contact us</h4>
+                                    <h4>&ensp;&ensp;Contact us&ensp;&ensp;</h4>
                             </li>
                         </ul>
                     </div>
@@ -78,16 +83,15 @@ export let Aboutus = () => {
         {/* Our Idea */}
         <div ref={line1Ref}>
             <div className="container-fluid">
-                <div className="row shadow" style={{padding:"0 130px 0 130px"}}>
-                    <h1 className='display-2' style={{padding:"40px 0 0 0"}}>Our Idea</h1>
-                    <div className="col-5" style={{padding:"0px 20px 40px 0px"}}>
-                    <img src={img1} className="img-fluid rounded-top bg-light" alt="userdp" style={{height:"300px"}}/>
+                <div className="row shadow" style={{padding:"0 10% 0 10%"}}>
+                    <h1 className='display-2' style={{padding:"8% 0 3% 0"}}><strong>Our Idea</strong></h1>
+                    <div className="col-md-5 mb-5" >
+                        <img src={img1} className="img-fluid rounded-top bg-light" alt="userdp" style={{height:"270px"}}/>
                     </div>
-                    <div className="col-1">
+                    <div className="col-md-1">
                     </div>
-                    <div className="col-6" style={{padding:"30px"}}>
-                        <h5 style={{fontFamily:"sans-serif"}}>
-                        <br/>
+                    <div className="col-md-6" style={{padding:"0 0 8% 0"}}>
+                        <p class="mt-4">
                         The main objective of this project is building a website which can increase the
                         interaction between patients, doctors and hospitals.
                         Supposing the patients have the knowledge of computers and the internet,  
@@ -96,76 +100,79 @@ export let Aboutus = () => {
                         On the other side, doctors and hospitals can also manage their requirements according to patients.
                         Data about the available facilities can be visible to the patients.
 
-                        </h5>
+                        </p>
                     </div>
                 </div>
             </div>
         </div>
         {/* Team Members */}
-        <div ref={line2Ref}>
+        <div ref={line2Ref} style={{ backgroundImage: `url(${bgimg3})`, backgroundRepeat: "no-repeat", backgroundSize: "cover", position: "relative"}}>
             <div className="container-fluid">
-                <div className="row shadow" style={{padding:"0 130px 0 130px"}}>
-                <h1 className='display-2' style={{padding:"50px 0 0 0"}}>Team Members</h1>
-                    <div className="col-3" style={{padding:"30px"}}>
-                        <div className="card mt-1" style={{padding:"30px",borderRadius:"30px"}}>
+                <div className="row shadow" style={{padding:"0 10% 0 10%"}}>
+                <h1 className='display-2' style={{padding:"8% 0 3% 0"}}><strong>Team Members</strong></h1>
+                    <div className="col-md-3" style={{padding:"15px"}}>
+                        <div className="card mt-1" style={{padding:"20px",borderRadius:"30px"}}>
                             <img src={saurabh} className="img-fluid rounded-top bg-light" alt="userdp" sizes='100px'/>
-                            <h3 className="mt-3 text-dark" style={{fontFamily:"cursive"}}>Saurabh Ashok Potdukhe</h3>
+                            <h4 className="mt-3 text-dark" style={{fontFamily:"cursive"}}>Saurabh Ashok Potdukhe</h4>
                             <h6 className="text-muted">potdukhe12@gmail.com</h6>
                         </div>
                     </div>
-                    <div className="col-3" style={{padding:"30px"}}>
-                        <div className="card mt-1" style={{padding:"25px",borderRadius:"30px"}}>
+                    <div className="col-md-3" style={{padding:"15px"}}>
+                        <div className="card mt-1" style={{padding:"20px",borderRadius:"30px"}}>
                             <img src={atharv} className="img-fluid rounded-top bg-light" alt="userdp" sizes='100px'/>
-                            <h3 className="mt-3 text-dark" style={{fontFamily:"cursive"}}>Atharv Sanjeev Suryavanshi</h3>
+                            <h4 className="mt-3 text-dark" style={{fontFamily:"cursive"}}>Atharv Sanjeev Suryavanshi</h4>
                             <h6 className="text-muted">atharvssnew1234@gmail.com</h6>
                         </div>
                     </div>
-                    <div className="col-3" style={{padding:"30px"}}>
-                        <div className="card mt-1" style={{padding:"25px",borderRadius:"30px"}}>
+                    <div className="col-md-3" style={{padding:"15px"}}>
+                        <div className="card mt-1" style={{padding:"20px",borderRadius:"30px"}}>
                             <img src={ajay} className="img-fluid rounded-top bg-light" alt="userdp" sizes='100px'/>
-                            <h3 className="mt-3 text-dark" style={{fontFamily:"cursive"}}>Ajay Shivajirao Bhosle</h3>
+                            <h4 className="mt-3 text-dark" style={{fontFamily:"cursive"}}>Ajay Shivajirao Bhosle</h4>
                             <h6 className="text-muted">ajay.bhosle15@vit.edu</h6>
                         </div>
                     </div>
-                    <div className="col-3" style={{padding:"30px"}}>
-                        <div className="card mt-1" style={{padding:"30px",borderRadius:"30px"}}>
+                    <div className="col-md-3" style={{padding:"15px"}}>
+                        <div className="card mt-1" style={{padding:"20px",borderRadius:"30px"}}>
                             <img src={gaurav} className="img-fluid rounded-top bg-light" alt="userdp" sizes='100px'/>
-                            <h3 className="mt-3 text-dark" style={{fontFamily:"cursive"}}>Gaurav Shankar Urkude</h3>
+                            <h4 className="mt-3 text-dark" style={{fontFamily:"cursive"}}>Gaurav Shankar Urkude</h4>
                             <h6 className="text-muted">gsurkude10@gmail.com</h6>
                         </div>
+                    </div>
+                    <div class="mb-5">
+
                     </div>
                 </div>
             </div>
         </div>
         {/* Our Guides */}
-        <div ref={line3Ref}>
+        <div ref={line3Ref} style={{ backgroundImage: `url(${bgimg3})`, backgroundRepeat: "no-repeat", backgroundSize: "cover", position: "relative"}}>
         <div className="container-fluid">
-            <div className="row" style={{padding:"0 90px 0 90px"}}>
-                <h1 className='display-2' style={{padding:"50px 0 0 0"}}>Our Guides</h1>
-                    <div className="col-2" style={{padding:"30px"}}>
+            <div className="row" style={{padding:"0 10% 0 10%"}}>
+                <h1 className='display-2' style={{padding:"50px 0 0 0"}}><strong>Our Guides</strong></h1>
+                    <div className="col-md-1">
                         
                     </div>
-                    <div className="col-4" style={{padding:"30px"}}>
-                        <div className="card mt-1" style={{padding:"25px",borderRadius:"40px"}}>
-                            <h3 className="mt-3 text-dark" style={{fontFamily:"cursive"}}>Mr. Prathamesh Naik</h3>
+                    <div className="col-md-5" style={{padding:"30px"}}>
+                        <div className="card mt-1" style={{padding:"25px",borderRadius:"20px"}}>
+                            <h4 className="mt-3 text-dark" style={{fontFamily:"cursive"}}>Mr. Prathamesh Naik</h4>
                             <h6 className="text-muted">prathamsnaik@gmail.com</h6>
                         </div>
                     </div>
-                    <div className="col-4" style={{padding:"30px"}}>
-                        <div className="card mt-1" style={{padding:"25px",borderRadius:"40px"}}>
-                            <h3 className="mt-3 text-dark" style={{fontFamily:"cursive"}}>Mrs. Dhanashree Rangole</h3>
+                    <div className="col-md-5" style={{padding:"30px"}}>
+                        <div className="card mt-1" style={{padding:"25px",borderRadius:"20px"}}>
+                            <h4 className="mt-3 text-dark" style={{fontFamily:"cursive"}}>Mrs. Dhanashree Rangole</h4>
                             <h6 className="text-muted">dhanashreerangole@gmail.com</h6>
                         </div>
                     </div>
-                    <div className="col-2" style={{padding:"30px"}}>
+                    <div className="col-md-1">
                         
                     </div>
                 </div>
-                <div className="row shadow" style={{padding:"0 200px 0 200px"}}>
-                <h6 className='display-2' style={{padding:"50px 0 25px 0",fontSize:"40px"}}>Special thanks to...</h6>
+                <div className="row shadow" style={{padding:"0 10% 0 10%"}}>
+                <h6 className='display-2' style={{padding:"40px 0 25px 0",fontSize:"35px"}}><strong>Special thanks to...</strong></h6>
                     <p style={{padding:"0 0 50px 0"}}>
                         A project of such comprehensive coverage cannot be prepared without help from numerous sources.
-                        We gratefully acknowledge the generous help of <b>Mrs. Bakul Joshi</b>, <b>Mrs. Dhanashree Rangole</b> for their
+                        We gratefully acknowledge the generous help of <b>Mrs. Bakul Joshi</b> {/*, <b>Mrs. Dhanashree Rangole</b>*/} for her 
                         inspiration, guidance & assistance at all stages of this project work. We owe them a great debt
                         of gratitude as without their support this work would not have been completed, indeed.
                         We feel privileged to have <b>Mr. Shrinivas Jadhav</b> as <b>Vice-President</b> of <b>Know-IT C-DAC, Pune</b>. 
@@ -179,27 +186,27 @@ export let Aboutus = () => {
             </div>
         </div>
         {/* Future Scope */}
-        <div ref={line4Ref}>
-            <div className="row" style={{padding:"0 150px 0 150px"}}>
-                <h1 className='display-2' style={{padding:"50px 0 0 0"}}>Future Scope</h1>
-                    <div className="col-4" style={{padding:"30px"}}>
-                        <div className="card mt-1" style={{padding:"30px",borderRadius:"40px"}}>
+        <div ref={line4Ref} style={{ backgroundImage: `url(${bgimg2})`, backgroundRepeat: "no-repeat", backgroundSize: "cover", position: "relative"}}>
+            <div className="row" style={{padding:"0 10% 0 10%"}}>
+                <h1 className='display-2' style={{padding:"50px 0 0 0"}}><strong>Future Scope</strong></h1>
+                    <div className="col-md-4" style={{padding:"30px"}}>
+                        <div className="card mt-1" style={{padding:"20px",borderRadius:"40px"}}>
                             <h5 className="mt-3 text-dark" style={{fontFamily:"cursive"}}>
                                 We have all heard the term “big data” and what it can do for healthcare. 
                                 As technology advances, big data and its applications in everyday life will also be used.
                             </h5>
                         </div>
                     </div>
-                    <div className="col-4" style={{padding:"30px"}}>
-                        <div className="card mt-1" style={{padding:"30px",borderRadius:"40px"}}>
+                    <div className="col-md-4" style={{padding:"30px"}}>
+                        <div className="card mt-1" style={{padding:"20px",borderRadius:"40px"}}>
                             <h5 className="mt-3 text-dark" style={{fontFamily:"cursive"}}>
                                 Hospitals are beginning to take advantage of technological advancements 
                                 from a single-server system to a cloud-based system.
                             </h5>
                         </div>
                     </div>
-                    <div className="col-4" style={{padding:"30px"}}>
-                        <div className="card mt-1" style={{padding:"30px",borderRadius:"40px"}}>
+                    <div className="col-md-4" style={{padding:"30px"}}>
+                        <div className="card mt-1" style={{padding:"20px",borderRadius:"40px"}}>
                             <h5 className="mt-3 text-dark" style={{fontFamily:"cursive"}}>
                                 With the Internet of Things, hospitals will manage their patients more conveniently 
                                 and effectively, with increased safety and better customer service.
@@ -207,8 +214,8 @@ export let Aboutus = () => {
                         </div>
                     </div>
                 </div>
-            <div className="row shadow" style={{padding:"0 200px 0 200px"}}>
-            <h6 className='display-2' style={{padding:"50px 0 25px 0",fontSize:"40px"}}>What will be the Future of Medical Practice...</h6>
+            <div className="row" style={{padding:"0 10% 0 10%"}}>
+            <h6 className='display-2' style={{padding:"50px 0 25px 0",fontSize:"35px"}}><strong>What will be the Future of Medical Practice...</strong></h6>
                 <p>
                     The Healthcare Management System will soon be able to streamline the administrative process of hospitals. 
                     Instead of having paper files, these software programs will use advanced technology to secure and 

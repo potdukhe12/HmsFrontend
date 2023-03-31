@@ -21,54 +21,62 @@ return (
                             <FontAwesomeIcon icon={faPhone} /> +91-9999878398
                         </p> */}
                     <div className="row">
-                        <div className="col-4">
+                        <div className="col-md-4">
                             <p>
                                 <FontAwesomeIcon icon={faLocationArrow} /> 
                                 <a href='https://www.linkedin.com/in/saurabh-potdukhe-61b643132/'> Saurabh Potdukhe</a>
                             </p>
                         </div>
-                        <div className="col-8">
+                        <div className="col-md-2">
                             <p>
-                                <a href='https://github.com/potdukhe12'>Github</a><br/>
+                                <a href='https://github.com/potdukhe12'>Github</a>
+                            </p>
+                        </div>
+                        <div className="col-md-4">
+                            <p>
                                 <FontAwesomeIcon icon={faEnvelope} /> potdukhe12@gmail.com
                             </p>
                         </div>
                     </div>
                     <div className="row">
-                        <div className="col-4">
+                        <div className="col-md-4">
                             <p>
                                 <FontAwesomeIcon icon={faLocationArrow} /> 
                                 <a href='https://www.linkedin.com/in/gaurav-urkude-74b310261/'> Gaurav Urkude</a>
                             </p>
                         </div>
-                        <div className="col-8">
+                        <div className="col-md-2">
                             <p>
-                                <a href='https://github.com/gauravurkude'>Github</a><br/>
+                                <a href='https://github.com/gauravurkude'>Github</a>
+                            </p>
+                        </div>
+                        <div className="col-md-4">
+                            <p>
                                 <FontAwesomeIcon icon={faEnvelope} /> gsurkude10@gmail.com
                             </p>
                         </div>
                     </div>
                     <div className="row">
-                        <div className="col-4">
+                        <div className="col-md-4">
                             <p>
                                 <FontAwesomeIcon icon={faLocationArrow} /> 
                                 <a href='https://github.com/ajaybhosle1212'> Ajay Bhosle </a>
                             </p>
                         </div>
-                        <div className="col-8">
+                        <div className="col-md-5">
                             <p>
                                 <FontAwesomeIcon icon={faEnvelope} /> ajay.bhosle15@vit.edu
                             </p>
                         </div>
                     </div>
                     <div className="row">
-                        <div className="col-4">
+                        <div className="col-md-4">
                             <p>
                                 <FontAwesomeIcon icon={faLocationArrow} /> 
                                 <a href='https://github.com/atharva-suryavanshi'> Atharv Suryavanshi</a>
                             </p>
                         </div>
-                        <div className="col-8">
+                        <div className="col-md-5">
                             <p>
                                 <FontAwesomeIcon icon={faEnvelope} /> atharvssnew1234@gmail.com
                             </p>
@@ -78,10 +86,10 @@ return (
                     <div className="col-md-3">
                         <h5 className="headin5_amrc col_white_amrc pt2">Quick links</h5>
                         <ul className="footer_ul_amrc">
-                            <li><a href="./aboutus"><h5>About us</h5></a></li>
                             <li><a href="./">Home</a></li>
                             <li><a href="./login">Login</a></li>
                             <li><a href="./signup">Register</a></li>
+                            <li><a href="./aboutus">About us</a></li>
                         </ul>
                 </div>
                 <div className="col-md-3">

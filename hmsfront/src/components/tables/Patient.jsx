@@ -25,18 +25,18 @@ export let Patient = (props) => {
 
     return (
         <div>
-            <div class="container-fluid mt-5">
+            <div class="container-fluid mt-3">
                 <div class="row mb-3">
-                    <div class="col-2">
+                    <div class="col-md-2">
                     </div>
-                    <div class="col-8">
+                    <div class="col-md-8">
                         <div class="card border-primary">
                             <div class="card-body">
                                 <div class="container-fluid">
                                     <div class="row">
-                                        <div class="col-6" style={{ backgroundImage: `url(${hosimg})`, height: "auto", backgroundRepeat: "no-repeat", backgroundSize: "contain" }}>
+                                        <div class="col-md-6" style={{ backgroundImage: `url(${hosimg})`, height: "auto", backgroundRepeat: "no-repeat", backgroundSize: "contain" }}>
                                         </div>
-                                        <div class="col-6" style={{ paddingLeft: "50px" }}>
+                                        <div class="col-md-6" style={{ paddingLeft: "50px" }}>
                                              <h4 class="card-title" style={{ textAlign: "left" }}>Patient Name: {pat["pname"]}</h4><br/>
                                             <p class="card-text" style={{ textAlign: "left" }}><strong>Patient ID:</strong> {pat["pid"]}</p>
                                             <p class="card-text" style={{ textAlign: "left" }}><strong>D.O.B.: </strong>{convDate(pat["dob"])} &emsp; <strong>Age:</strong> {age}</p>
@@ -53,7 +53,7 @@ export let Patient = (props) => {
                             </div>
                         </div>
                     </div>
-                    <div class="col-2">
+                    <div class="col-md-2">
 
                     </div>
                 </div>

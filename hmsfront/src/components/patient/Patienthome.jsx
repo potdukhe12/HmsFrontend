@@ -2,6 +2,7 @@ import bgimg from "../../img/bg4.jpg";
 import userdpmale from "../../img/userdp.jpg"
 import userdpfemale from "../../img/userdp2.jpg"
 import { Navig } from "../common/Navig";
+import Footer from '../common/Footer';
 import axios from "axios";
 import React, { useRef } from 'react';
 import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
@@ -63,7 +64,7 @@ export let Patienthome = (props) => {
     var ageDate = new Date(ageDifMs); // miliseconds from epoch
     const age = Math.abs(ageDate.getUTCFullYear() - 1970);
 
-    const [prof, setProf] = useState("col-8");
+    const [prof, setProf] = useState("col-md-8");
     const [updt, setUpdt] = useState("collapse");
     const [icon, setIcon] = useState(<BsFillPencilFill></BsFillPencilFill>);
     const st1 = "btn btn-outline-dark btn-lg mt-3 mb-3";
@@ -106,25 +107,25 @@ export let Patienthome = (props) => {
             <div style={{ backgroundImage: `url(${bgimg})`, height: "72vh", backgroundRepeat: "no-repeat", backgroundSize: "cover" }}>
                 <div className="container-fluid">
                     <div className="row">
-                        <div className="col-1">
+                        <div className="col-md-1">
                         </div>
-                        <div className="col-6" style={{padding:"0 50px 0 50px"}}>
+                        <div className="col-md-6" style={{padding:"0 5% 0 5%"}}>
                             <form action="" method="get">
                                 <div className="card mt-5">
                                     <div className="container-fluid">
                                         <div className="row shadow">
-                                            <div className="col-4">
+                                            <div className="col-md-4">
                                                 <div className="mt-3">
                                                     <img src={uid["pid"]["gender"] === "Male" ? userdpmale : userdpfemale} className="img-fluid rounded-top bg-light" alt="userdp" />
                                                     <h3 className="mt-3 text-dark">{uid["pid"]["pname"]}</h3>
                                                     <h5 className="text-muted">Patient</h5>
                                                     <br />
                                                     <button type="button" className="btn btn-outline-dark pb-2 mb-5" onClick={() => {
-                                                        if (prof === "col-8") {
-                                                            setIcon(<BsXSquare></BsXSquare>); setProf("collapse"); setUpdt("col-8");
+                                                        if (prof === "col-md-8") {
+                                                            setIcon(<BsXSquare></BsXSquare>); setProf("collapse"); setUpdt("col-md-8");
                                                         }
                                                         else {
-                                                            setIcon(<BsFillPencilFill></BsFillPencilFill>); setProf("col-8"); setUpdt("collapse");
+                                                            setIcon(<BsFillPencilFill></BsFillPencilFill>); setProf("col-md-8"); setUpdt("collapse");
                                                         }
                                                     }}>{icon}</button>
                                                 </div>
@@ -158,11 +159,17 @@ export let Patienthome = (props) => {
                                                             <div className="row">
                                                                 <div className="col">
                                                                     <p><BsPhone></BsPhone>&ensp;Mobile No.:</p>
-                                                                    <p style={{ textAlign: "center" }}><strong><em>{uid["pid"]["mobno"]}</em></strong></p>
                                                                 </div>
                                                                 <div className="col">
+                                                                    <p><strong><em>{uid["pid"]["mobno"]}</em></strong></p>
+                                                                </div>
+                                                            </div>
+                                                            <div className="row">
+                                                                <div className="col">
                                                                     <p><BsEnvelope></BsEnvelope>&ensp;E-Mail:</p>
-                                                                    <p style={{ textAlign: "center" }}><strong><em>{uid["uid"]["email"]}</em></strong></p>
+                                                                </div>
+                                                                <div className="col">
+                                                                    <p><strong><em>{uid["uid"]["email"]}</em></strong></p>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -171,10 +178,10 @@ export let Patienthome = (props) => {
                                                         <hr className="mt-1" />
                                                         <div style={{ textAlign: "left" }}>
                                                             <div className="row">
-                                                                <div className="col-4">
+                                                                <div className="col-md-4">
                                                                     <p>Address:</p>
                                                                 </div>
-                                                                <div className="col-8">
+                                                                <div className="col-md-8">
                                                                     <p><strong><em>{uid["uid"]["address"]}</em></strong></p>
                                                                 </div>
                                                             </div>
@@ -190,13 +197,13 @@ export let Patienthome = (props) => {
                                 </div>
                             </form>
                         </div>
-                        <div className="col-4 rounded bg-white mt-5 shadow" >
+                        <div className="col-md-4 rounded bg-white mt-5 shadow" style={{padding:"0px 12px 10px 12px"}} >
                             <div className="mt-3">
                                 <div className="card">
                                     <div className="card-body">
                                         <h4 className="card-title">Current Appointments <BsCalendarEvent></BsCalendarEvent></h4>
                                     </div>
-                                    <ul className="list-group list-group-flush" style={{ maxHeight: "330px", overflowY: "scroll" }}>
+                                    <ul className="list-group list-group-flush" style={{ maxHeight: "315px", overflowY: "scroll" }}>
                                         {
                                             apmt.map((a) => (
                                                 <li className="list-group-item">
@@ -218,7 +225,7 @@ export let Patienthome = (props) => {
                                 </div>
                             </div>
                         </div>
-                        <div className="col-1">
+                        <div className="col-md-1">
                         </div>
                     </div>
                     <br />
@@ -274,7 +281,7 @@ export let Patienthome = (props) => {
                     </div>
 
                     <div className="row pt-3">
-                        <div style={{ height: "600px", overflowY: "scroll", padding:"0 100px 0px 100px" }}>
+                        <div style={{ maxHeight: "600px", overflow: "scroll", padding:"0 5% 0px 5%" }}>
                             {page}
                         </div>
                     </div>

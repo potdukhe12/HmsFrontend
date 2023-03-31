@@ -21,7 +21,7 @@ export let Doctorview = (props) => {
     var ageDate = new Date(ageDifMs); // miliseconds from epoch
     const age = Math.abs(ageDate.getUTCFullYear() - 1970);
 
-    const prof = useState("col-8");
+    const prof = useState("col-md-8");
     // const [updt, setUpdt] = useState("collapse");
     // const [but, setBut] = useState("button");
     // const [icon, setIcon] = useState(<BsFillPencilFill></BsFillPencilFill>);
@@ -39,6 +39,7 @@ export let Doctorview = (props) => {
         return date;
     }
 
+    const ht = window.innerHeight-40;
     const convTime = (d) => {
         const tm1 = Date.parse(d);
         const tm2 = new Date(tm1);
@@ -63,21 +64,22 @@ export let Doctorview = (props) => {
     return (
         <div>
             <Navig></Navig>
-            <div style={{ backgroundImage: `url(${bgimg})`, height: "75vh", backgroundRepeat: "no-repeat", backgroundSize: "cover" }}>
-                <div>
-
+            <div style={{ backgroundImage: `url(${bgimg})`,height:ht, backgroundRepeat: "no-repeat", backgroundSize: "cover" }}>
+                <div className="">
+                    <br></br>
+                    <button type="button" class="btn btn-primary" onClick={() => { navigate(-1) }}>Back</button>
                 </div>
                 <div className="container-fluid">
                     <div className="row">
-                        <div className="col-1">
+                        <div className="col-md-1">
                         </div>
-                        <div className="col-6">
+                        <div className="col-md-6">
                             <form action="" method="get">
-                                <div className="card mt-5">
+                                <div className="card mt-3">
 
                                     <div className="container-fluid">
                                         <div className="row shadow">
-                                            <div className="col-4">
+                                            <div className="col-md-4">
                                                 <div className="mt-3">
                                                     <img src={uid["did"]["gender"] === "Male" ? userdpmale : userdpfemale} className="img-fluid rounded-top bg-light" alt="userdp" />
                                                     <h3 className="mt-3 text-dark">{uid["did"]["dname"]}</h3>
@@ -88,7 +90,7 @@ export let Doctorview = (props) => {
                                                 </div>
 
                                             </div>
-                                            <div className={prof}>
+                                            <div className="col-md-8">
                                                 <div className="card-body">
                                                     <h4 className="card-title"><strong>Profile</strong></h4>
                                                     <div className="text-left">
@@ -96,13 +98,19 @@ export let Doctorview = (props) => {
                                                         <hr className="mt-1" />
                                                         <div style={{ textAlign: "left" }}>
                                                             <div className="row">
-                                                                <div className="col">
+                                                                <div className="col-4">
                                                                     <p>Age:</p>
-                                                                    <p style={{ textAlign: "center" }}><strong><em>{age}</em></strong></p>
                                                                 </div>
                                                                 <div className="col">
+                                                                    <p><strong><em>{age}</em></strong></p>
+                                                                </div>
+                                                            </div>
+                                                            <div className="row">
+                                                                <div className="col-4">
                                                                     <p>Gender:</p>
-                                                                    <p style={{ textAlign: "center" }}><strong><em>{uid["did"]["gender"]}</em></strong></p>
+                                                                </div>
+                                                                <div className="col">
+                                                                    <p><strong><em>{uid["did"]["gender"]}</em></strong></p>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -113,11 +121,11 @@ export let Doctorview = (props) => {
                                                             <div className="row">
                                                                 <div className="col">
                                                                     <p><BsPhone></BsPhone>&ensp;Mobile No.:</p>
-                                                                    <p style={{ textAlign: "center" }}><strong><em>{uid["did"]["mobno"]}</em></strong></p>
+                                                                    <p><BsEnvelope></BsEnvelope>&ensp;E-Mail:</p>
                                                                 </div>
                                                                 <div className="col">
-                                                                    <p><BsEnvelope></BsEnvelope>&ensp;E-Mail:</p>
-                                                                    <p style={{ textAlign: "center" }}><strong><em>{uid["did"]["user"]["email"]}</em></strong></p>
+                                                                    <p><strong><em>{uid["did"]["mobno"]}</em></strong></p>
+                                                                    <p><strong><em>{uid["did"]["user"]["email"]}</em></strong></p>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -126,9 +134,11 @@ export let Doctorview = (props) => {
                                                         <hr className="mt-1" />
                                                         <div style={{ textAlign: "left" }}>
                                                             <div className="row">
-                                                                <div className="col">
+                                                                <div className="col-4">
                                                                     <p>Address:</p>
-                                                                    <p style={{ textAlign: "center" }}><strong><em>{uid["did"]["user"]["address"]}</em></strong></p>
+                                                                </div>
+                                                                <div className="col-8">
+                                                                    <p><strong><em>{uid["did"]["user"]["address"]}</em></strong></p>
                                                                 </div>
                                                             </div>
 
@@ -143,13 +153,13 @@ export let Doctorview = (props) => {
                                 </div>
                             </form>
                         </div>
-                        <div className="col-4 rounded bg-white mt-5 shadow">
+                        <div className="col-md-4 rounded bg-white mt-3 shadow">
                             <div className="mt-3">
                                 <div className="card">
                                     <div className="card-body">
                                         <h4 className="card-title">Current Appointments <BsCalendarEvent></BsCalendarEvent></h4>
                                     </div>
-                                    <ul className="list-group list-group-flush" style={{ maxHeight: "385px", overflowY: "scroll" }}>
+                                    <ul className="list-group list-group-flush" style={{ maxHeight: "360px", overflowY: "scroll" }}>
 
                                         {
                                             docapmt.map((a) => (
@@ -167,12 +177,9 @@ export let Doctorview = (props) => {
                                 </div>
                             </div>
                         </div>
-                        <div className="col-1">
+                        <div className="col-md-1">
 
                         </div>
-                    </div>
-                    <div className="mt-5">
-                        <button type="button" class="btn btn-primary" onClick={() => { navigate(-1) }}>Back</button>
                     </div>
                     <br />
                 </div>

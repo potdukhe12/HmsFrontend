@@ -39,12 +39,16 @@ export let Login = (props) => {
           const reserve3 = await axios.get(props.p + `/getHospitalByUid?uid=${response.data.uid}`)
           navigate("/hospital-home", { state: { uid : response.data.uid, hid : reserve3.data } });
         }
-        else
+        else if (role === "1") 
         {
           const reserve1 = await axios.get(props.p + `/getPatient?uid=${response.data.uid}`)
           navigate("/patient-home", { state: { uid : response.data, pid : reserve1.data } });
         }
        } 
+       else 
+       {
+        setErrorMsg("Invalid username or password");
+       }
       })
       .catch((error) => {
         setErrorMsg("Invalid username or password");
@@ -55,20 +59,23 @@ export let Login = (props) => {
 
   return (
     <div>
-        <Navig></Navig>
+        <Navig isLogin={true}></Navig>
         <div style={{backgroundImage: `url(${bgimg})`, height: "80vh", backgroundRepeat:"no-repeat",backgroundSize:"cover"}}>
         <br />
         <br />
         <br />
             <div className="container">
                 <div className="row">
-                    <div className="col-8">
+                    <div className="col-md-7">
                     </div>
-                    <div className="col-4 border border-primary rounded bg-white shadow" style={{width:"420px"}}>
+                    <div className="col-md-4 border border-primary rounded bg-white shadow" style={{width:"350px",margin:"0 5% 0 5%"}}>
     
                         <h1 className="text-primary" style={{padding:"8px 0 0 0"}}><strong>Login</strong></h1>
                         <hr style={{color: "green"}}/>
                         
+                        {errorMsg && (
+                          <span style={{ color: "red" }}>{errorMsg}</span>
+                        )}
                         <form onSubmit={handleSubmit}>
 
                         <div className="mb-3">
@@ -81,15 +88,12 @@ export let Login = (props) => {
                         </div>
                         <button type="submit" className="btn btn-primary mb-3">Login</button>
                         &nbsp;
-                        <button type="reset" className="btn btn-primary mb-3">Clear</button>
+                        <button type="reset" className="btn btn-primary mb-3" onClick={()=>{setErrorMsg("")}}>Clear</button>
                         </form>
                         <div className="mb-3">
                             <a href="/signup" style={{textUnderlineOffset:"3px"}}>Don't have an account? Sign Up</a>
                         </div>
-                        {errorMsg && <div className="text-danger mb-3">{errorMsg}</div>}
                     </div>
-                    {/* <div className="col-1">
-                    </div> */}
                 </div>
             </div>
         </div>

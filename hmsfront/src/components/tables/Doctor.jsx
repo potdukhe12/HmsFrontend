@@ -1,4 +1,4 @@
-import hosimg from "../../img/doctors.avif"
+import docimg from "../../img/doctors.avif"
 import { useLocation, useNavigate } from "react-router-dom";
 import { Navig } from "../common/Navig";
 
@@ -15,19 +15,21 @@ export let Doctor = (props) => {
     return (
         <div>
             <Navig></Navig>
-            <div class="container-fluid mt-5">
+            <button type="button" class="btn btn-primary mt-3" onClick={() => { navigate(-1) }}>Back</button>
+            <div class="container-fluid mt-3">
                 <div class="row mb-3">
-                    <div class="col-3">
+                    <div class="col-md-3">
 
                     </div>
-                    <div class="col-6">
+                    <div class="col-md-6">
                         <div class="card border-primary">
                             <div class="card-body">
                                 <div class="container-fluid">
                                     <div class="row">
-                                        <div class="col-6" style={{ backgroundImage: `url(${hosimg})`, height: "auto", backgroundRepeat: "no-repeat", backgroundSize: "contain" }}>
+                                        <div class="col-md-6">
+                                            <img src={docimg} style={{height:"190px"}}/>
                                         </div>
-                                        <div class="col-6" style={{ paddingLeft: "50px" }}>
+                                        <div class="col-md-6 mt-2" style={{ paddingLeft: "50px" }}>
                                             <h4 class="card-title" style={{ textAlign: "left" }}>Doctor:</h4>
                                             <h5 class="card-title" style={{ textAlign: "left" }}>{doc["doc"]["dname"]}</h5>
                                             <p class="card-text" style={{ textAlign: "left" }}>Doctor ID: {doc["doc"]["did"]}</p>
@@ -45,11 +47,10 @@ export let Doctor = (props) => {
                             </div>
                         </div>
                     </div>
-                    <div class="col-3">
+                    <div class="col-mb-3">
 
                     </div>
                 </div>
-                <button type="button" class="btn btn-primary" onClick={() => { navigate(-1) }}>Back</button>
             </div>
         </div>
     );
