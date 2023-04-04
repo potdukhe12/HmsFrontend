@@ -2,6 +2,8 @@ import { useLocation } from "react-router-dom";
 import logo from "../../img/logonav.png";
 import { useState } from "react";
 
+import "./Navig.css";
+
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 
@@ -61,9 +63,9 @@ export let Navig = (props) => {
               </li>
               {!isHome ? (
                   <>
-                    <li className="nav-item" style={{backgroundColor: !isNavCollapsed ? '#263238' : 'white', borderRadius: !isNavCollapsed ? "10px" : '0', margin: !isNavCollapsed ? "0 150px 3px 0" : '0'}}>
+                    <li className="nav-item" style={{backgroundColor: !isNavCollapsed ? '#263238' : 'white', borderRadius: !isNavCollapsed ? "10px" : '0', margin: !isNavCollapsed ? "0 150px 3px 0" : '0 10px 0 0'}}>
                       <a className="nav-link" href="./">
-                        <h4 style={{color: !isNavCollapsed ? 'white' : 'grey'}}>Home</h4>
+                        <h4 style={{color: !isNavCollapsed ? 'white':''}}>Home</h4>
                       </a>
                     </li>
                   </>
@@ -73,9 +75,9 @@ export let Navig = (props) => {
                   )}
               {!isAboutus ? (
                 <>
-                  <li className="nav-item" style={{backgroundColor: !isNavCollapsed ? '#263238' : 'white', borderRadius: !isNavCollapsed ? "10px" : '0', margin: !isNavCollapsed ? "0 150px 3px 0" : '0'}}>
+                  <li className="nav-item" style={{backgroundColor: !isNavCollapsed ? '#263238' : 'white', borderRadius: !isNavCollapsed ? "10px" : '0', margin: !isNavCollapsed ? "0 150px 3px 0" : '0 10px 0 0'}}>
                     <a className="nav-link" href="./about-us">
-                      <h4 style={{color: !isNavCollapsed ? 'white' : 'grey'}}>About us</h4>
+                      <h4 style={{color: !isNavCollapsed ? 'white' : ''}}>About us</h4>
                     </a>
                   </li>
                 </>
@@ -87,9 +89,9 @@ export let Navig = (props) => {
                 <>
                   {!isLogin ? (
                     <>
-                      <li className="nav-item" style={{backgroundColor: !isNavCollapsed ? '#263238' : 'white', borderRadius: !isNavCollapsed ? "10px" : '0', margin: !isNavCollapsed ? "0 150px 3px 0" : "0"}}>
+                      <li className="nav-item" style={{backgroundColor: !isNavCollapsed ? '#263238' : 'white', borderRadius: !isNavCollapsed ? "10px" : '0', margin: !isNavCollapsed ? "0 150px 3px 0" : "0 10px 0 0"}}>
                         <a className="nav-link" href="./login">
-                          <h4 style={{color: !isNavCollapsed ? 'white' : 'grey'}}>Login</h4>
+                          <h4 style={{color: !isNavCollapsed ? 'white' : ''}}>Login</h4>
                         </a>
                       </li>
                     </>
@@ -100,9 +102,9 @@ export let Navig = (props) => {
 
                     {!isSignup ? (
                       <>
-                        <li className="nav-item" style={{backgroundColor: !isNavCollapsed ? '#263238' : 'white', borderRadius: !isNavCollapsed ? "10px" : '0', margin: !isNavCollapsed ? "0 150px 3px 0" : '0'}}>
+                        <li className="nav-item" style={{backgroundColor: !isNavCollapsed ? '#263238' : 'white', borderRadius: !isNavCollapsed ? "10px" : '0', margin: !isNavCollapsed ? "0 150px 3px 0" : '0 10px 0 0'}}>
                           <a className="nav-link" href="./signup">
-                            <h4 style={{color: !isNavCollapsed ? 'white' : 'grey'}}>Register</h4>
+                            <h4 style={{color: !isNavCollapsed ? 'white' : ''}}>Register</h4>
                           </a>
                         </li>
                       </>
@@ -113,9 +115,9 @@ export let Navig = (props) => {
                 </>
               ) : (
                 <>
-                  <li className="nav-item" style={{backgroundColor: !isNavCollapsed ? '#263238' : 'white', borderRadius: !isNavCollapsed ? "10px" : 'none', margin: !isNavCollapsed ? "0 150px 3px 0" : '0'}}>
+                  <li className="nav-item" style={{backgroundColor: !isNavCollapsed ? '#263238' : 'white', borderRadius: !isNavCollapsed ? "10px" : 'none', margin: !isNavCollapsed ? "0 150px 3px 0" : '0 10px 0 0'}}>
                     <a className="nav-link" href="./login">
-                      <h4 style={{color: !isNavCollapsed ? 'white' : 'grey'}}>Logout</h4>
+                      <h4 style={{color: !isNavCollapsed ? 'white' : ''}}>Logout</h4>
                     </a>
                   </li>
                 </>

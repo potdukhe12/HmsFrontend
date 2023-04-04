@@ -62,10 +62,12 @@ export let Doctorhome = (props) => {
         const result = await axios.get(props.p + `/getApmtByDid?did=${uid["did"]["did"]}`);
         console.log(result.data);
 
-        setDocapmt(result.data);
-        // setDocapmt(result.data);
-
+        if (result.data !== null) {
+            setDocapmt(result.data);
+        }
     }
+
+    const status = uid["did"]["status"];
 
     return (
         <div>
@@ -210,13 +212,21 @@ export let Doctorhome = (props) => {
                           <div className="rounded bg-white mt-5 shadow">
                             <div className="mt-3">
                                 <div className="card mb-3" >
+                                    {!status && (
+                                                <span class="mt-2" style={{ color: "red" }}><strong>
+                                                    You are Deactivated.<br/>
+                                                    Please contact your Hospital.
+                                                </strong>
+                                                <hr/>
+                                                </span>
+                                            )}
                                     <div className="card-body" >
                                         <h4 className="card-title">Current Appointments <BsCalendarEvent></BsCalendarEvent></h4>
                                     </div>
                                     <ul className="list-group list-group-flush" style={{ maxHeight: "380px", overflowY: "scroll" }}>
 
-                                        {
-                                            docapmt.map((a) => (
+                                        { docapmt ? (<>
+                                            {docapmt.map((a) => (
                                                 <li className="list-group-item">
                                                     <p className="mb-1"><strong>Appointment by: {a["patient"]["pname"]}</strong></p>
                                                     <p className="text-muted mb-1">Treatment: {a["treatment"]["tname"]}</p>
@@ -233,7 +243,12 @@ export let Doctorhome = (props) => {
                                                         </button>
                                                     </div>
                                                 </li>
-                                            ))
+                                            ))}
+                                        </>) : (<>
+                                        <div>
+                                            <h2 class="text-primary" style={{padding:"20%", textAlign:"left"}}>No <br/>Appointments <br/>Scheduled</h2>
+                                        </div>
+                                        </>)
                                         }
                                     </ul>
                                 </div>

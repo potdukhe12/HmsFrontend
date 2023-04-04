@@ -1,7 +1,7 @@
 import bgimg from "../../img/bg7.jpg";
 import userdp from "../../img/admin.jpg"
 import { Navig } from "../common/Navig";
-import { BsFillPencilFill, BsEnvelope, BsPhone, BsXSquare } from "react-icons/bs";
+import { BsFillPencilFill, BsEnvelope, BsPhone, BsXSquare, BsPlusCircle } from "react-icons/bs";
 import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 
 import axios from "axios";
@@ -44,6 +44,8 @@ export let Adminhome = (props) => {
     const [disval, setDisval] = useState("");
     const [butval, setButval] = useState("");
 
+    const aid = admin["aid"]["aid"];
+
     useEffect(() => {
         getHos();
         // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -51,7 +53,7 @@ export let Adminhome = (props) => {
 
     const getHos = async () => {
 
-        const result = await axios.get(props.p + `/getAllHospital`);
+        const result = await axios.get(props.p + `/getHospitalByAid?aid=` + aid);
 
         setHos(result.data);
 
@@ -165,6 +167,8 @@ export let Adminhome = (props) => {
 
                                         </DropdownMenu>
                                     </Dropdown>
+                                    <div class="col-2"></div>
+                                    <button type="button" class="btn btn-success container col-5" onClick={() => { navigate("../signup", { state: { arole:"3", aaid:aid } }) }}><BsPlusCircle></BsPlusCircle><i> Add Hospital</i></button>
                                 </div>
                                 <div className={vis}>
                                     <div class="card border-dark m-3">
@@ -179,9 +183,7 @@ export let Adminhome = (props) => {
                                                         <p class="card-text" style={{ textAlign: "left" }}><strong>Contact No.: </strong>{hosp["teleno"]}</p>
                                                     </div>
                                                 </div>
-
                                             </div>
-
                                         </div>
                                     </div>
                                     <div className="row">
@@ -193,7 +195,7 @@ export let Adminhome = (props) => {
                                                 await axios.get(props.p + `/updateHosStatus?hid=${hosp["hid"]}`).then(alert("Status updated successfully!")).then((navigate(0)));
                                             }}>{butval}</button>
                                         </div>
-                                        <div className="col">
+                                        <div className="col mb-3">
                                             <button type="button" class="btn btn-danger container" onClick={async () => {
                                                 await axios.delete(props.p + `/deleteUser?uid=${hosp["user"]["uid"]}`).then(alert("Hospital has been deleted successfully!")).then(navigate(0));
                                             }}>Delete</button>

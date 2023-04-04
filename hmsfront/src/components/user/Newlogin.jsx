@@ -4,11 +4,17 @@ import { useNavigate } from "react-router-dom";
 import { Navig } from "../common/Navig";
 import bgimg from "../../img/bg2.jpg";
 import Footer from "../common/Footer";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 
 export let Login = (props) => {
   const [uname, setUsername] = useState("");
   const [pwd, setPassword] = useState("");
+  const [email, setEmail] = useState("");
+  const [cnfpwd, setCnfPassword] = useState("");
   const [errorMsg, setErrorMsg] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
+  const [showPassword2, setShowPassword2] = useState(false);
 
   const navigate = useNavigate();
 
@@ -51,26 +57,58 @@ export let Login = (props) => {
        }
       })
       .catch((error) => {
-        setErrorMsg("Invalid username or password");
+        setErrorMsg("Server Error");
         console.log(error);
       });
   };
 
+  const [login, setLogin] = useState("");
+  const [fpass, setFpass] = useState("collapse");
+  const [fpMSG, setFpMSG] = useState("Forgot Password/Change Password");
+
+  const handleSubmitFP = async(event) => {
+    event.preventDefault();
+    if( pwd === cnfpwd )
+    {
+      await axios
+      .get(props.p + "/updatePassword?email="+email+"&pwd="+pwd)
+      .then(async (response) => {
+        if( response.data )
+        {
+          alert("Your Password is changed successfully!!!");
+          setErrorMsg("");
+        }
+        else
+        {
+          setErrorMsg("Invalid Email!");
+        }
+      })
+      .then(() => {navigate("/login")})
+      .catch((error) => {
+        setErrorMsg("Server Error");
+        console.log(error);
+      })
+    }
+    else
+    {
+      setErrorMsg("Passwords do not match!");
+    }
+    
+
+    };
 
   return (
     <div>
         <Navig isLogin={true}></Navig>
         <div style={{backgroundImage: `url(${bgimg})`, height: "80vh", backgroundRepeat:"no-repeat",backgroundSize:"cover"}}>
         <br />
-        <br />
-        <br />
             <div className="container">
                 <div className="row">
                     <div className="col-md-7">
                     </div>
                     <div className="col-md-4 border border-primary rounded bg-white shadow" style={{width:"350px",margin:"0 5% 0 5%"}}>
-    
-                        <h1 className="text-primary" style={{padding:"8px 0 0 0"}}><strong>Login</strong></h1>
+                      <div class={login}>
+                        <h1 className="text-primary" style={{padding:"10px 0 0 0"}}><strong>Login</strong></h1>
                         <hr style={{color: "green"}}/>
                         
                         {errorMsg && (
@@ -78,22 +116,104 @@ export let Login = (props) => {
                         )}
                         <form onSubmit={handleSubmit}>
 
-                        <div className="mb-3">
-                            <label for="uname" className="form-label"><strong>User Name</strong></label>
-                            <input type="text" className="form-control" name="uname" id="uname" placeholder="Enter your User Name" onChange={(event) => setUsername(event.target.value)}/>
-                        </div>
-                        <div className="mb-3">
-                            <label for="pwd" className="form-label"><strong>Password</strong></label>
-                            <input type="password" className="form-control" name="pwd" id="pwd" placeholder="Enter your Password" onChange={(event) => setPassword(event.target.value)}/>
-                        </div>
-                        <button type="submit" className="btn btn-primary mb-3">Login</button>
-                        &nbsp;
-                        <button type="reset" className="btn btn-primary mb-3" onClick={()=>{setErrorMsg("")}}>Clear</button>
+                          <div className="mb-4">
+                            <strong>User Name</strong>
+                            <input type="text" className="form-control mt-2" name="uname" id="uname" placeholder="Enter your User Name" onChange={(event) => setUsername(event.target.value)}/>
+                          </div>
+
+                          <div className="mb-4">
+                                <strong>Password</strong>
+                            <div class="row">  
+                              <div class="col-10 mt-2">
+                                <input type={showPassword ? "text" : "password"} className="form-control" name="pwd" id="pwd" placeholder="Enter your Password" onChange={(event) => setPassword(event.target.value)}/>
+                              </div>
+                              <div class="col-2 text-start my-auto">
+                                <span>
+                                  <FontAwesomeIcon icon={showPassword ? faEyeSlash : faEye}
+                                    onClick={() => setShowPassword(!showPassword)} />
+                                </span>
+                              </div>
+                            </div>
+                          </div>
+                        <button type="submit" className="btn btn-primary mb-3" style={{width:"120px"}}>Login</button>
+                        &ensp;&emsp;
+                        <button type="reset" className="btn btn-primary mb-3" style={{width:"120px"}} onClick={()=>{setErrorMsg("")}}>Clear</button>
                         </form>
+                      </div>
+{/* **************************************************************************************************************************** */}
+                      <div className={fpass}>
+                      <h2 className="text-primary" style={{padding:"10px 0 0 0"}}><strong>Forgot Password</strong></h2>
+                        <hr/>
+                        
+                        {errorMsg && (
+                          <span style={{ color: "red" }}>{errorMsg}</span>
+                        )}
+
+                        <form onSubmit={handleSubmitFP}>
+
+                            <div className="mb-3">
+                                <strong>Enter Your Email</strong>
+                                <input type="text" className="form-control" name="email" id="email" value={email} onChange={(event) => setEmail(event.target.value)}/>
+                            </div>
+
+                            <div className="mb-3">
+                                  <strong>New Password</strong>
+                              <div class="row">
+                                <div class="col-10 my-auto">
+                                  <input type={showPassword ? "text" : "password"} className="form-control" name="pwd" id="pwd" value={pwd} onChange={(event) => setPassword(event.target.value)}/>
+                                </div>
+                                <div class="col-2 text-start my-auto">
+                                  <span>
+                                    <FontAwesomeIcon icon={showPassword ? faEyeSlash : faEye}
+                                      onClick={() => setShowPassword(!showPassword)} />
+                                  </span>
+                                </div>
+                              </div>
+                            </div>
+
+                            <div className="mb-4">
+                                  <strong>Confirm Password</strong>
+                              <div class="row">
+                                <div class="col-10 my-auto">
+                                  <input type={showPassword2 ? "text" : "password"} className="form-control" name="cnfpwd" id="cnfpwd" value={cnfpwd} onChange={(event) => setCnfPassword(event.target.value)}/>
+                                </div>
+                                <div class="col-2 text-start my-auto">
+                                  <span>
+                                    <FontAwesomeIcon icon={showPassword2 ? faEyeSlash : faEye}
+                                      onClick={() => setShowPassword2(!showPassword2)} />
+                                  </span>
+                                </div>
+                              </div>
+                            </div>
+
+                            <button type="submit" className="btn btn-primary mb-4" style={{width:"220px"}}>Submit</button>
+                        
+                        </form>
+
+                      </div>
+{/* **************************************************************************************************************************** */}
+                      <div>
+                          <button type="button" className="btn btn-outline-dark pb-2 mb-2 mt-3" 
+                                  onClick={() => {
+                                                    if (login === "") {
+                                                      setFpMSG("Go back to LOGIN"); 
+                                                      setLogin("collapse"); 
+                                                      setFpass("");
+                                                      setErrorMsg("");
+                                                    }
+                                                    else {
+                                                      setFpMSG("Forgot Password/Change Password"); 
+                                                      setLogin(""); 
+                                                      setFpass("collapse");
+                                                      setErrorMsg("");
+                                                    }
+                                                  }}>{fpMSG}</button>
+                        </div>
                         <div className="mb-3">
                             <a href="/signup" style={{textUnderlineOffset:"3px"}}>Don't have an account? Sign Up</a>
                         </div>
                     </div>
+                    
                 </div>
             </div>
         </div>

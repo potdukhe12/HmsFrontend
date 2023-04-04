@@ -5,21 +5,19 @@ import { ListGroup, ListGroupItem } from 'reactstrap';
 import bgimg from "../../img/bg5.jpg";
 import userdp from "../../img/hospital-avatar.png"
 import { Navig } from "../common/Navig";
-import { BsFillPencilFill, BsEnvelope, BsPhone, BsXSquare } from "react-icons/bs";
+import { BsFillPencilFill, BsEnvelope, BsPhone, BsXSquare, BsPlusCircle, BsFileEarmarkMedical } from "react-icons/bs";
 
 import { useEffect, useState } from "react";
 import { Hospitalupdate } from "./Hospitalupdate";
 
 import { useLocation, useNavigate } from "react-router-dom";
 
-import { BsPlusCircle } from "react-icons/bs";
-import { BsFileEarmarkMedical } from "react-icons/bs";
-
-
 export let Hospitalhome = (props) => {
     const navigate = useNavigate()
     const location = useLocation();
     const uid = location.state || {};
+
+    const hid = uid["hid"]["hid"];
 
     const [prof, setProf] = useState("col-md-8");
     const [updt, setUpdt] = useState("collapse");
@@ -49,16 +47,19 @@ export let Hospitalhome = (props) => {
 
     const getDoc = async () => {
         const result = await axios.get(props.p + `/getDoctorByHid?hid=${uid["hid"]["hid"]}`);
-        console.log(result.data);
-        setDoc(result.data);
+        console.log("result1"+result.data);
+        if(result.data !== null)
+            setDoc(result.data);
     }
     const getApmt = async () => {
-        const result = await axios.get(props.p + `/getApmtByHid?hid=${uid["hid"]["hid"]}`);
-        console.log(result.data);
-        setApmt(result.data);
+        const result2 = await axios.get(props.p + `/getApmtByHid?hid=${uid["hid"]["hid"]}`);
+        console.log("result2"+result2.data);
+        if(result2.data !== null)
+            setApmt(result2.data);
     }
 
-
+    const status = uid["hid"]["status"]
+    console.log("Hii : " + status );
 
     return (
         <div>
@@ -91,13 +92,13 @@ export let Hospitalhome = (props) => {
                                             </div>
                                             <div className={prof}  style={{padding:"15px 0 5px 10px"}}>
                                                 <div className="card-body">
-                                                    <h4 className="card-title"><strong>Profile</strong></h4>
+                                                    <h4 className="card-title"><strong>Profile&ensp;&ensp;</strong></h4>
                                                     <div className="text-left">
                                                         <h6 style={{ textAlign: "left" }}>Contact Details:</h6>
                                                         <hr className="mt-1" />
                                                         <div style={{ textAlign: "left" }}>
                                                             <div className="row">
-                                                                <div className="col-md-5">
+                                                                <div className="col-6">
                                                                     <p><BsPhone></BsPhone>&ensp;Contact No.:</p>
                                                                 </div>
                                                                 <div className="col">
@@ -105,7 +106,7 @@ export let Hospitalhome = (props) => {
                                                                 </div>
                                                             </div>
                                                             <div className="row">
-                                                                <div className="col-md-4">
+                                                                <div className="col-4">
                                                                     <p><BsEnvelope></BsEnvelope>&ensp;E-Mail:</p>
                                                                 </div>
                                                                 <div className="col">
@@ -113,8 +114,7 @@ export let Hospitalhome = (props) => {
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <br />
-                                                        <h6 style={{ textAlign: "left" }}>Address Details:</h6>
+                                                        <h6 class="mt-3" style={{ textAlign: "left" }}>Address Details:</h6>
                                                         <hr className="mt-1" />
                                                         <div style={{ textAlign: "left" }}>
                                                             <div className="row">
@@ -123,6 +123,24 @@ export let Hospitalhome = (props) => {
                                                                 </div>
                                                                 <div className="col">
                                                                     <p><strong><em>{uid["hid"]["user"]["address"]}</em></strong></p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <h6 class="mt-3" style={{ textAlign: "left" }}>Admin Details:</h6>
+                                                        <hr className="mt-1" />
+                                                        <div style={{ textAlign: "left" }}>
+                                                            <div className="row">
+                                                                <div className="col-5">
+                                                                    <p>Admin Name:</p>
+                                                                </div>
+                                                                <div className="col-7">
+                                                                    <p><strong><em>{uid["hid"]["admin"]["aname"]}</em></strong></p>
+                                                                </div>
+                                                                <div className="col-5">
+                                                                    <p>Admin Contact:</p>
+                                                                </div>
+                                                                <div className="col-7">
+                                                                    <p><strong><em>{uid["hid"]["admin"]["user"]["email"]}</em></strong></p>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -143,43 +161,59 @@ export let Hospitalhome = (props) => {
                                     <div className="card-body">
                                         <h4 className="card-title">Working Doctors <BsFileEarmarkMedical></BsFileEarmarkMedical></h4>
                                     </div>
-                                    <div style={{ maxHeight: "375px", overflowY: "scroll" }}>
+                                    <div style={{ maxHeight: "357px", overflowY: "scroll" }}>
                                         <ListGroup className="m-2">
-                                            {
-                                                doc.map((d) => (
-                                                    <ListGroupItem>
-                                                        <div class="container-fluid">
-                                                            <div class="row">
-                                                                <div class="col-8" style={{ textAlign: "left" }}>
-                                                                    <button type="button" class="btn btn-light" style={{ minWidth: "5cm" }} 
-                                                                        onClick={() => { navigate("../doc", { state: { did: d } }) }}>
-                                                                            {d["dname"]}
-                                                                    </button>
-                                                                </div>
-                                                                <div class="col-4">
-                                                                    <button type="button" class={d["status"]===true?"btn btn-warning":"btn btn-success"} 
-                                                                        onClick={async () => {
-                                                                            const activeApmt = await axios.get(props.p + `/getDocActiveApmt?did=${d["did"]}`)
-                                                                            console.log(activeApmt.data)
-                                                                            if(activeApmt.data && d["status"]===true)
-                                                                            {
-                                                                                alert(`Please address ongoing ${activeApmt.data} appointments first!`)
-                                                                            }
-                                                                            else
-                                                                            {
-                                                                                await axios.get(props.p + `/updateDocStatus?did=${d["did"]}`)
-                                                                                .then(alert("Status updated successfully!"))
-                                                                                .then((navigate(0)));
-                                                                            }
-                                                                    }}>{d["status"]===true?"Disable":"Enable"}</button>
-                                                                </div>
+                                        { doc ? (<>
+                                            { doc.map((d) => (
+                                                <ListGroupItem>
+                                                    <div class="container-fluid">
+                                                        <div class="row">
+                                                            <div class="col-8" style={{ textAlign: "left" }}>
+                                                                <button type="button" class="btn btn-light" style={{ minWidth: "5cm" }} 
+                                                                    onClick={() => { navigate("../doc", { state: { did: d } }) }}>
+                                                                        {d["dname"]}
+                                                                </button>
+                                                            </div>
+                                                            <div class="col-4">
+                                                                <button type="button" class={d["status"]===true?"btn btn-warning":"btn btn-success"} 
+                                                                    onClick={async () => {
+                                                                        const activeApmt = await axios.get(props.p + `/getDocActiveApmt?did=${d["did"]}`)
+                                                                        console.log(activeApmt.data)
+                                                                        if(activeApmt.data && d["status"]===true)
+                                                                        {
+                                                                            alert(`Please address ongoing ${activeApmt.data} appointments first!`)
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                            await axios.get(props.p + `/updateDocStatus?did=${d["did"]}`)
+                                                                            .then(alert("Status updated successfully!"))
+                                                                            .then((navigate(0)));
+                                                                        }
+                                                                }}>{d["status"]===true?"Disable":"Enable"}</button>
                                                             </div>
                                                         </div>
-                                                    </ListGroupItem>
-                                                ))
+                                                    </div>
+                                                </ListGroupItem>
+                                            ))}
+                                            </>) : (<>
+                                                <div>
+                                                    <h2 class="text-primary" style={{padding:"5% 10% 10% 20%", textAlign:"left"}}>No <br/>Doctors <br/>Added</h2>
+                                                </div>
+                                            </>)
                                             }
-                                            <ListGroupItem active tag="button" action onClick={() => { navigate("../signup") }}><strong><BsPlusCircle></BsPlusCircle> Add a doctor</strong></ListGroupItem>
+                                            <ListGroupItem active tag="button" action 
+                                                disabled={status === false}
+                                                onClick={() => { navigate("../signup", { state: { arole:"2", hhid:hid } }) }}>
+                                                    <strong><BsPlusCircle></BsPlusCircle> Add a doctor</strong>
+                                            </ListGroupItem>
                                         </ListGroup>
+                                            {!status && (
+                                                <div style={{paddingBottom:"10px", color: "red" }}><strong>
+                                                    Not allowed!<br/>
+                                                    You are Deactivated.<br/>
+                                                    Please contact your ADMIN.<br/>
+                                                    </strong></div>
+                                            )}
                                     </div>
                                 </div>
                           </div>
@@ -190,10 +224,10 @@ export let Hospitalhome = (props) => {
                     </div>
                     <br /><br /><br />
 
-                    <div className="row" style={{padding:"0 5% 10% 5%",maxHeight:"700px"}}>
-                        
+                { apmt ? (<>
+                    <div className="row" style={{padding:"0 5% 10% 5%",maxHeight:"820px"}}>
                         <div>
-                            <h1 className="text-dark" style={{ textAlign: "left", marginLeft: "7%" }}><strong>Appointments</strong></h1>
+                            <h1 className="text-light" style={{ textAlign: "left", marginLeft: "7%" }}><strong>List of Appointments</strong></h1>
                             <hr className="border-light border" />
                             <div>
                                 <div class="table-responsive rounded">
@@ -231,12 +265,18 @@ export let Hospitalhome = (props) => {
                                         <tfoot>
 
                                         </tfoot>
-                                        <br/><br/>
+                                        {/* <br/> */}
                                     </table>
                                 </div>
                             </div>
                         </div>
                     </div>
+                  </>) : (<>
+                    <span>
+                      <h1 style={{color:"white"}}>No Appointments To Show</h1>
+                      <br/>
+                    </span>
+                  </>)}
                 </div>
             </div>
         </div>

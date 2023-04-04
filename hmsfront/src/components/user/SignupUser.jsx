@@ -3,16 +3,21 @@ import Footer from "../common/Footer";
 import { Navig } from "../common/Navig";
 import React, { useState } from 'react';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 
 export let SignupUser = (props) => {
+    
+    const location = useLocation();
+
       const [user, setUser] = useState({
         uname: '',
         pwd: '',
         confirmpwd: '',
         email: '',
         address: '',
-        role: '1'
+        role: location.state && location.state.arole ? location.state.arole : '',
       });
       
       const [patientForm, setPatientForm] = useState(false);
@@ -21,9 +26,18 @@ export let SignupUser = (props) => {
       const [adminForm, setAdminForm] = useState(false);
       const [uid, setUid] = useState();
       const [invalid, setInvalid] = useState(false);
+      const [showPassword, setShowPassword] = useState(false);
+      const [showPassword2, setShowPassword2] = useState(false);
     
       const navigate = useNavigate();
-    
+      
+    //   user["role"] = location.state && location.state.arole ? location.state.arole : "";
+      console.log("ROLE : " + user["role"]);
+      const aid = location.state && location.state.aaid ? location.state.aaid : "";
+      console.log("AID : " + aid);
+      const hid = location.state && location.state.hhid ? location.state.hhid : "";
+      console.log("HID : " + hid);
+
       const handleChange = (event) => {
         const { name, value } = event.target;
         setUser((prevUser) => ({
@@ -124,8 +138,11 @@ export let SignupUser = (props) => {
 const [hospital, setHospital] = useState({
     hname: '',
     teleno: '',
-    status: 'false'
+    status: 'false',
+    aid: aid
   });
+  
+//   hospital["aid"] = aid;
 
   const handleChange4 = (event) => {
     const { name, value } = event.target;
@@ -135,19 +152,21 @@ const [hospital, setHospital] = useState({
     }));
   };
 
+  
   const handleHospitalSubmit = (event) => {
     event.preventDefault();
-    const { hname, teleno, status } = hospital;
+    const { hname, teleno, status, aid } = hospital;
     console.log(user);
     console.log(hospital);
     console.log(uid);
-
+    admin["aid"] = aid;
     user["uid"] = uid;
     axios
       .post(props.p + `/saveHospital`, {
         hname, 
         teleno, 
         status,
+        admin,
         user
       })
       .then(() => {
@@ -160,7 +179,6 @@ const [hospital, setHospital] = useState({
 //////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////
 
-const [hid, setHid] = useState();
 const [doctor, setDoctor] = useState({
     dname: '',
     dob: '',
@@ -169,7 +187,8 @@ const [doctor, setDoctor] = useState({
     degree: '',
     experience: '0',
     specialization: '',
-    status: 'false'
+    status: 'false',
+    hid
   });
 
   const handleChange3 = (event) => {
@@ -180,20 +199,12 @@ const [doctor, setDoctor] = useState({
     }));
   };
 
-//   const handleChange3_2 = (event) => {
-//     const { name, value } = event.target;
-//     setHid((prevHid) => ({
-//         prevHid,
-//         [name]: value,
-//       }));
-//   };
-
 
   const handleDoctorSubmit = (event) => {
     event.preventDefault();
     const { dname, dob, mobno, gender, 
         degree, experience, specialization, 
-        status} = doctor;
+        status, hid} = doctor;
     console.log(user);
     console.log(doctor);
     console.log(uid);
@@ -271,12 +282,18 @@ const [admin, setAdmin] = useState({
             <Navig isSignup={true}></Navig>
             <div style={{backgroundImage: `url(${bgimg})`, height: "95vh", backgroundRepeat:"no-repeat",backgroundSize:"cover"}}>
 
-            <br />
-                <div className="container">
+            <br /><br />
+                <div className="container flex">
                     <div className="row">
-                        <div className="col-md-6">
+                        <div className="col-md-7">
                         </div>
-                        <div className="col-md-6 border border-primary rounded bg-white" style={{width:"365px", margin:"0 2% 0 2%"}}>
+                        <div className="col-md-5 border border-primary rounded bg-white"
+                                style={{
+                                    // width:"365px", 
+                                    // margin:"0 2% 0 2%",
+                                    padding:"0 2% 0 2%"
+                                }}
+                        >
                             
                             <h1 className="text-primary" style={{margin: "10px"}}><strong>Sign Up</strong></h1>
                             <hr style={{color: "green"}}/>
@@ -478,7 +495,7 @@ const [admin, setAdmin] = useState({
                 </div>
                 
                 <div className="col-2">
-                    <label htmlFor="role" >&ensp;Status:</label>
+                    <label htmlFor="status" >&ensp;Status:</label>
                 </div>
                 <div className="col-4">
                     <select id="status" name="status" 
@@ -494,13 +511,16 @@ const [admin, setAdmin] = useState({
                 </div>
             <div className="row">
                 <div className="col">
+                    <label htmlFor="hid" >Hospital ID:</label>
+                </div>
+                <div className="col">
                     <input type="text" class="form-control" 
                         id="hid"
                         name="hid"
-                        value={hid}
-                        onChange={(v) => {setHid(v.target.value)}}
+                        value={doctor.hid}
+                        onChange={handleChange3}
                         placeholder="Enter Your Hospital ID"
-                        required
+                        disabled
                     />
                     {/* <select value={hid} onChange={handleSelectChange}>
                         <option value="">Select a hospital</option>
@@ -510,6 +530,9 @@ const [admin, setAdmin] = useState({
                         </option>
                             ))}
                     </select> */}
+                </div>
+                <div className="col">
+                    <label htmlFor="experience" >Experience:</label>
                 </div>
                 <div className="col">
                     <input type="int" class="form-control" 
@@ -562,6 +585,9 @@ const [admin, setAdmin] = useState({
         </div>
           <br/>
             <div className="row">
+                <div className="col-3">
+                    <label htmlFor="hname" >Name:</label>
+                </div>
                 <div className="col">
                     <input type="text" class="form-control" 
                         id="hname"
@@ -589,6 +615,7 @@ const [admin, setAdmin] = useState({
                     />
                 </div>
                 <div className="col">
+                    <label htmlFor="status" >Status:</label>
                     <select id="status" name="status" 
                                 style={{textAlign:"center"}} class="form-control form-select" 
                                 value={hospital.status} 
@@ -596,6 +623,23 @@ const [admin, setAdmin] = useState({
                         <option value="0" style={{color:"red"}}>Inactive &ensp;&ensp;</option>
                         <option value="1" style={{color:"green"}}>Active &ensp;&ensp;</option>
                     </select>
+                </div>
+            </div>
+                <div className="mb-3">
+                </div>
+            <div className="row">
+                <div className="col">
+                    <label htmlFor="aid" >Admin ID:</label>
+                </div>
+                <div className="col">
+                    <input type="text" class="form-control" 
+                        id="aid"
+                        name="aid"
+                        value={hospital.aid}
+                        onChange={handleChange4}
+                        placeholder="Enter Your Admin ID"
+                        disabled
+                    />
                 </div>
             </div>
                 <div className="mb-3">
@@ -626,15 +670,18 @@ const [admin, setAdmin] = useState({
 
 <form onSubmit={handleAdminSubmit}>
         <div className="row">
-            <div className="col-7">
+            <div className="col">
               <h4>Admin Details</h4>
             </div>
-            <div className="col-5">
+            {/* <div className="col-5">
                 <h4>UID: {uid}</h4>
-            </div>
+            </div> */}
         </div>
           <br/>
             <div className="row">
+                <div className="col-3 text-start">
+                    <h5>Name:</h5>
+                </div>
                 <div className="col">
                     <input type="text" class="form-control" 
                         id="aname"
@@ -650,6 +697,9 @@ const [admin, setAdmin] = useState({
                 </div>
             
             <div className="row">
+                <div className="col-3 text-start">
+                    <h5>Mob.No.:</h5>
+                </div>
                 <div className="col">
                     <input type="tel" class="form-control" 
                         id="mobno"
@@ -683,9 +733,8 @@ const [admin, setAdmin] = useState({
 
         <form onSubmit={handleRegisterSubmit}>
             <h4>User details</h4>
-            <br/>
             {invalid && <p>Username or password already in use!</p>} 
-                <div className="row">
+                <div className="row mb-2 mt-3">
                     <div className="col-6">
                         <input type="text"
                             class="form-control" id="uname"
@@ -696,24 +745,31 @@ const [admin, setAdmin] = useState({
                             placeholder="Enter Unique UserName"
                         />
                     </div>
-                    <div className="col-2">
-                        <label htmlFor="role" >&ensp;Role:</label>
+                    <div class="col-2 text-start my-auto">
+                        <strong>Role:</strong>
                     </div>
                     <div className="col-4">
                         <select id="role" name="role" style={{textAlign:"center"}} class="form-control form-select" value={user.role} onChange={handleChange}>
-                            <option value="1">Patient &ensp;&ensp;</option>
-                            <option value="2">Doctor &ensp;&ensp;</option>
-                            <option value="3">Hospital &ensp;&ensp;</option>
-                            <option value="4">Admin &ensp;&ensp;</option>
+                            <option value="1">
+                                Patient &ensp;&ensp;</option>
+                            <option value="2" disabled title="Only HOSPITAL MANAGEMENT can add doctors. Please contact your HOSPITAL.">
+                                Doctor &ensp;&ensp;</option>
+                            <option value="3" disabled title="Only ADMIN can add HOSPITAL. Please contact your ADMIN.">
+                                Hospital &ensp;&ensp;</option>
+                            <option value="4">
+                                Admin &ensp;&ensp;</option>
                         </select>
                     </div>
                   <div className="mb-3">
                   </div>
                 </div>
                 <div className="row">
-                    <div className="col">
-                        <div className="col">
-                        <input type="password" class="form-control" 
+                    <div class="col-5 text-start my-auto">
+                        <strong>&ensp;Password :</strong>
+                    </div>
+                    <div className="col-6">
+                        <input type={showPassword ? "text" : "password"} 
+                            class="form-control" 
                             id="pwd"
                             name="pwd"
                             value={user.pwd}
@@ -721,11 +777,22 @@ const [admin, setAdmin] = useState({
                             placeholder="Enter Password"
                             required
                         />
-                        </div>
                     </div>
-                    <div className="col">
+                    <div class="col-1 text-start my-auto">
+                        <span>
+                            <FontAwesomeIcon icon={showPassword ? faEyeSlash : faEye}
+                                onClick={() => setShowPassword(!showPassword)} />
+                        </span>
+                    </div>
+                </div>
+                <div className="row mt-3">
+                    <div class="col-5 text-start my-auto">
+                        <strong>&ensp;Confirm Password :</strong>
+                    </div>
+                    <div className="col-6">
                         <input
-                            type="password" class="form-control"
+                            type={showPassword2 ? "text" : "password"} 
+                            class="form-control"
                             id="confirmpwd"
                             name="confirmpwd"
                             value={user.confirmpwd}
@@ -734,12 +801,21 @@ const [admin, setAdmin] = useState({
                             required
                         />
                     </div>
+                    <div class="col-1 text-start my-auto">
+                        <span>
+                            <FontAwesomeIcon icon={showPassword2 ? faEyeSlash : faEye}
+                                onClick={() => setShowPassword2(!showPassword2)} />
+                        </span>
+                    </div>
                 </div>
                 
                 <div className="mb-3">
                   </div>
                 <div className="row">
-                    <div className="col">
+                    <div class="col-5 text-start my-auto">
+                        <strong>&ensp;Email :</strong>
+                    </div>
+                    <div className="col-6">
                         <input
                             type="email" class="form-control" 
                             id="email"
