@@ -38,7 +38,7 @@ const reducer = ( state, action ) => {
 }
 
 const [info, dispatch] = useReducer( reducer, init );
-const reduxAction = useDispatch();
+// const reduxAction = useDispatch();
 
 const sendData = (e) => {
   e.preventDefault();

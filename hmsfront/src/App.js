@@ -22,7 +22,7 @@ import { FourOFour } from './components/common/NotFound';
 import { Hospitalcontrol } from './components/admin/Hospitalcontrol';
 import { Treatmentcontrol } from './components/admin/Treatmentcontrol';
 import { Aboutus } from './components/common/Aboutus';
-import LogoutComp from './components/user/LogoutComp';
+// import LogoutComp from './components/user/LogoutComp';
 
 function App() {
 
@@ -37,7 +37,7 @@ function App() {
         <Route path='home' element={<Home p={path}></Home>}></Route>
         <Route path='footer' element={<Footer></Footer>}></Route>
         <Route path='login' element={<Login p={path}></Login>}></Route>
-        <Route path='logout' element={<LogoutComp />}></Route>
+        {/* <Route path='logout' element={<LogoutComp />}></Route> */}
         <Route path='signup' element={<SignupUser p={path}></SignupUser>}></Route>
         <Route path='patient-home' element={<Patienthome p={path}></Patienthome>}></Route>
         <Route path='doctor-home' element={<Doctorhome p={path}></Doctorhome>}></Route>
