@@ -1,17 +1,13 @@
 import { useLocation } from "react-router-dom";
 import logo from "../../img/logonav.png";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+
 import "./Navig.css";
+
 import 'bootstrap/dist/css/bootstrap.min.css';
-// import 'bootstrap/dist/js/bootstrap.bundle.min.js';
-import { useSelector } from "react-redux";
+import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 
 export let Navig = (props) => {
-
-//  initial state of logged from store component
-  let mystate = useSelector( (state) => state.logged );
-  console.log(mystate);
 
   const location = useLocation();
   const uid = location.state;
@@ -60,12 +56,13 @@ export let Navig = (props) => {
           <div className={`${isNavCollapsed ? "collapse" : ""} navbar-collapse justify-content-end`} id="navbarNav"
               style={{  transition: "height 0.3s ease",
                           height: "auto",
-                          overflow: "hidden"}}>
+                          overflow: "hidden"}}
+          >
             
             <ul className="navbar-nav">
               <li className="nav-item">
               </li>
-              {!isHome && (
+              {!isHome ? (
                   <>
                     <li className="nav-item" style={{backgroundColor: !isNavCollapsed ? '#263238' : 'none', borderRadius: !isNavCollapsed ? "10px" : '0', margin: !isNavCollapsed ? "0 150px 3px 0" : '0 10px 0 0'}}>
                       <a className="nav-link" href="./">
@@ -73,8 +70,11 @@ export let Navig = (props) => {
                       </a>
                     </li>
                   </>
+                  ):(
+                    <>
+                    </>
                   )}
-              {!isAboutus && (
+              {!isAboutus ? (
                 <>
                   <li className="nav-item" style={{backgroundColor: !isNavCollapsed ? '#263238' : 'none', borderRadius: !isNavCollapsed ? "10px" : '0', margin: !isNavCollapsed ? "0 150px 3px 0" : '0 10px 0 0'}}>
                     <a className="nav-link" href="./about-us">
@@ -82,10 +82,13 @@ export let Navig = (props) => {
                     </a>
                   </li>
                 </>
+                ):(
+                  <>
+                  </>
                 )}
-              { !uid ? (
+              {!uid ? (
                 <>
-                  {!isLogin && (
+                  {!isLogin ? (
                     <>
                       <li className="nav-item" style={{backgroundColor: !isNavCollapsed ? '#263238' : 'none', borderRadius: !isNavCollapsed ? "10px" : '0', margin: !isNavCollapsed ? "0 150px 3px 0" : "0 10px 0 0"}}>
                         <a className="nav-link" href="./login">
@@ -93,15 +96,21 @@ export let Navig = (props) => {
                         </a>
                       </li>
                     </>
+                  ):(
+                    <>
+                    </>
                   )}
 
-                    {!isSignup && (
+                    {!isSignup ? (
                       <>
                         <li className="nav-item" style={{backgroundColor: !isNavCollapsed ? '#263238' : 'none', borderRadius: !isNavCollapsed ? "10px" : '0', margin: !isNavCollapsed ? "0 150px 3px 0" : '0'}}>
                           <a className="nav-link" href="./signup">
                             <h4 style={{color: !isNavCollapsed ? 'white' : ''}}>Signup</h4>
                           </a>
                         </li>
+                      </>
+                    ):(
+                      <>
                       </>
                     )}
                 </>
@@ -111,7 +120,6 @@ export let Navig = (props) => {
                     <a className="nav-link" href="./login">
                       <h4 style={{color: !isNavCollapsed ? 'white' : ''}}>Logout</h4>
                     </a>
-                    {/* <Link to="logout" className="nav-link">Logout</Link> */}
                   </li>
                 </>
               )}

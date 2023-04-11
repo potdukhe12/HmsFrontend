@@ -1,7 +1,7 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebookF, faTwitter, faLinkedin, faInstagram,faGithub } from '@fortawesome/free-brands-svg-icons';
-import { faLocationArrow, faEnvelope } from '@fortawesome/free-solid-svg-icons';
+import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import './Footer.css';
 
 // This footer was refered from...
@@ -21,57 +21,95 @@ return (
                             <FontAwesomeIcon icon={faPhone} /> +91-9999878398
                         </p> */}
                     <div className="row">
-                        <div className="col-4">
+                        <div className="col-5">
                             <p>
-                                <FontAwesomeIcon icon={faLocationArrow} /> 
+                                <FontAwesomeIcon icon={faLinkedin} /> 
                                 <a href='https://www.linkedin.com/in/saurabh-potdukhe-61b643132/'> Saurabh Potdukhe</a>
                             </p>
                         </div>
-                        <div className="col-8">
-                            <p>
-                                <a href='https://github.com/potdukhe12'>Github</a><br/>
-                                <FontAwesomeIcon icon={faEnvelope} /> potdukhe12@gmail.com
-                            </p>
+                        <div className="col-7">
+                            <div className="row">
+                            <div className="col-md-3">
+                                <p>
+                                    <FontAwesomeIcon icon={faGithub} />
+                                    <a href='https://github.com/potdukhe12'> Github</a><br/>
+                                </p>
+                            </div>
+                            <div className="col-md-9 text-start">
+                                <p>
+                                    <FontAwesomeIcon icon={faEnvelope} /> potdukhe12@gmail.com
+                                </p>
+                            </div>
+                            </div>
                         </div>
                     </div>
                     <div className="row">
-                        <div className="col-4">
+                        <div className="col-5">
                             <p>
-                                <FontAwesomeIcon icon={faLocationArrow} /> 
+                                <FontAwesomeIcon icon={faLinkedin} /> 
                                 <a href='https://www.linkedin.com/in/gaurav-urkude-74b310261/'> Gaurav Urkude</a>
                             </p>
                         </div>
-                        <div className="col-8">
-                            <p>
-                                <a href='https://github.com/gauravurkude'>Github</a><br/>
-                                <FontAwesomeIcon icon={faEnvelope} /> gsurkude10@gmail.com
-                            </p>
+                        <div className="col-7">
+                            <div className="row">
+                            <div className="col-md-3">
+                                <p>
+                                    <FontAwesomeIcon icon={faGithub} />
+                                    <a href='https://github.com/gauravurkude'> Github</a><br/>
+                                </p>
+                            </div>
+                            <div className="col-md-9 text-start">
+                                <p>
+                                    <FontAwesomeIcon icon={faEnvelope} /> gsurkude10@gmail.com
+                                </p>
+                            </div>
+                            </div>
                         </div>
                     </div>
                     <div className="row">
-                        <div className="col-4">
+                        <div className="col-5">
                             <p>
-                                <FontAwesomeIcon icon={faLocationArrow} /> 
+                                <FontAwesomeIcon icon={faLinkedin} /> 
                                 <a href='https://github.com/ajaybhosle1212'> Ajay Bhosle </a>
                             </p>
                         </div>
-                        <div className="col-8">
-                            <p>
-                                <FontAwesomeIcon icon={faEnvelope} /> ajay.bhosle15@vit.edu
-                            </p>
+                        <div className="col-7">
+                            <div className="row">
+                            <div className="col-md-3">
+                                <p>
+                                    {/* <FontAwesomeIcon icon={faGithub} />
+                                        <a href=''>Github</a><br/> */}
+                                </p>
+                            </div>
+                            <div className="col-md-9 text-start">
+                                <p>
+                                    <FontAwesomeIcon icon={faEnvelope} /> ajay.bhosle15@vit.edu
+                                </p>
+                            </div>
+                            </div>
                         </div>
                     </div>
                     <div className="row">
-                        <div className="col-4">
+                        <div className="col-5">
                             <p>
-                                <FontAwesomeIcon icon={faLocationArrow} /> 
+                                <FontAwesomeIcon icon={faLinkedin} /> 
                                 <a href='https://github.com/atharva-suryavanshi'> Atharv Suryavanshi</a>
                             </p>
                         </div>
-                        <div className="col-8">
-                            <p>
-                                <FontAwesomeIcon icon={faEnvelope} /> atharvssnew1234@gmail.com
-                            </p>
+                        <div className="col-7">
+                            <div className="row">
+                            <div className="col-md-3">
+                                <p>
+                                    {/* <FontAwesomeIcon icon={faGithub} />
+                                        <a href=''>Github</a><br/> */}
+                                </p>
+                            </div>
+                            <div className="col-md-9 text-start">
+                                <p>
+                                    <FontAwesomeIcon icon={faEnvelope} /> atharvssnew1234@gmail.com
+                                </p>
+                            </div>
+                            </div>
                         </div>
                     </div>
                 </div>

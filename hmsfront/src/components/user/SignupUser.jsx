@@ -88,6 +88,18 @@ export let SignupUser = (props) => {
           });
       };
     
+      const handleReset = () => {
+        setUser({
+          uname: "",
+          pwd: "",
+          confirmpwd: "",
+          email: "",
+          address: "",
+          role: "1",
+        });
+        setInvalid(false);
+      };
+      
 
 //////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////
@@ -767,45 +779,50 @@ const [admin, setAdmin] = useState({
                     <div class="col-5 text-start my-auto">
                         <strong>&ensp;Password :</strong>
                     </div>
-                    <div className="col-6">
-                        <input type={showPassword ? "text" : "password"} 
-                            class="form-control" 
-                            id="pwd"
-                            name="pwd"
-                            value={user.pwd}
-                            onChange={handleChange}
-                            placeholder="Enter Password"
-                            required
-                        />
-                    </div>
-                    <div class="col-1 text-start my-auto">
-                        <span>
-                            <FontAwesomeIcon icon={showPassword ? faEyeSlash : faEye}
-                                onClick={() => setShowPassword(!showPassword)} />
-                        </span>
+                    <div className="col-7">
+                        <div className="row">
+                            <div class="col input-group">
+                                <input type={showPassword ? "text" : "password"} 
+                                    class="form-control" 
+                                    id="pwd" name="pwd" value={user.pwd}
+                                    onChange={handleChange}
+                                    placeholder="Enter Password"
+                                    required
+                                />
+                                <button type="button" class="btn btn-outline-secondary"
+                                onClick={() => setShowPassword(!showPassword)}
+                                style={{ height: "100%", display: "flex", alignItems: "center" }}>
+                                    <FontAwesomeIcon
+                                        icon={showPassword ? faEyeSlash : faEye}
+                                        style={{ width: "20px" }}/>
+                                </button>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div className="row mt-3">
                     <div class="col-5 text-start my-auto">
                         <strong>&ensp;Confirm Password :</strong>
                     </div>
-                    <div className="col-6">
-                        <input
-                            type={showPassword2 ? "text" : "password"} 
-                            class="form-control"
-                            id="confirmpwd"
-                            name="confirmpwd"
-                            value={user.confirmpwd}
-                            onChange={handleChange}
-                            placeholder="Confirm Password"
-                            required
-                        />
-                    </div>
-                    <div class="col-1 text-start my-auto">
-                        <span>
-                            <FontAwesomeIcon icon={showPassword2 ? faEyeSlash : faEye}
-                                onClick={() => setShowPassword2(!showPassword2)} />
-                        </span>
+                    <div className="col-7">
+                        <div className="row">
+                            <div class="col input-group">
+                                <input
+                                    type={showPassword2 ? "text" : "password"} 
+                                    class="form-control" id="confirmpwd" name="confirmpwd"
+                                    value={user.confirmpwd} onChange={handleChange}
+                                    placeholder="Confirm Password"
+                                    required
+                                />
+                                <button type="button" class="btn btn-outline-secondary"
+                                onClick={() => setShowPassword2(!showPassword2)}
+                                style={{ height: "100%", display: "flex", alignItems: "center" }}>
+                                    <FontAwesomeIcon
+                                        icon={showPassword2 ? faEyeSlash : faEye}
+                                        style={{ width: "20px" }}/>
+                                </button>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 
@@ -849,7 +866,7 @@ const [admin, setAdmin] = useState({
                   <button type="submit" className="btn btn-primary mb-3" style={{padding: "7px 40px 7px 40px"}}>Next</button>
                     </div>
                   <div className="col" style={{textAlign:"center"}}>
-                  <button type="reset" className="btn btn-primary mb-3" onClick={()=>{setInvalid("")}} style={{padding: "7px 50px 7px 50px"}}>Clear</button>
+                  <button type="reset" className="btn btn-primary mb-3" onClick={()=>{setInvalid("");handleReset()}} style={{padding: "7px 50px 7px 50px"}}>Clear</button>
                     </div>
                 </div>
           </form>

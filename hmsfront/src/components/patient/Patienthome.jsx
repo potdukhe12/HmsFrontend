@@ -2,7 +2,7 @@ import bgimg from "../../img/bg4.jpg";
 import userdpmale from "../../img/userdp.jpg"
 import userdpfemale from "../../img/userdp2.jpg"
 import { Navig } from "../common/Navig";
-import Footer from '../common/Footer';
+// import Footer from '../common/Footer';
 import axios from "axios";
 import React, { useRef } from 'react';
 import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
@@ -104,7 +104,7 @@ export let Patienthome = (props) => {
     return (
         <div>
             <Navig></Navig>
-            <div style={{ backgroundImage: `url(${bgimg})`, height: "72vh", backgroundRepeat: "no-repeat", backgroundSize: "cover" }}>
+            <div style={{ backgroundImage: `url(${bgimg})`, height: "73vh", backgroundRepeat: "no-repeat", backgroundSize: "cover" }}>
                 <div className="container-fluid">
                     <div className="row">
                         <div className="col-md-1">
@@ -203,7 +203,7 @@ export let Patienthome = (props) => {
                                     <div className="card-body">
                                         <h4 className="card-title">Current Appointments <BsCalendarEvent></BsCalendarEvent></h4>
                                     </div>
-                                    <ul className="list-group list-group-flush" style={{ maxHeight: "315px", overflowY: "scroll" }}>
+                                    <ul className="list-group list-group-flush" style={{ maxHeight: "314px", overflowY: "scroll" }}>
                                         {
                                             apmt.map((a) => (
                                                 <li className="list-group-item">
@@ -281,7 +281,7 @@ export let Patienthome = (props) => {
                     </div>
 
                     <div className="row pt-3">
-                        <div style={{ maxHeight: "600px", overflow: "scroll", padding:"0 5% 0px 5%" }}>
+                        <div style={{ minHeight: "600px", overflow: "scroll", padding:"0 5% 0px 5%" }}>
                             {page}
                         </div>
                     </div>

@@ -6,6 +6,7 @@ import bgimg from "../../img/bg2.jpg";
 import Footer from "../common/Footer";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
+import "./Newlogin.css";
 
 export let Login = (props) => {
   const [uname, setUsername] = useState("");
@@ -106,8 +107,8 @@ export let Login = (props) => {
                 <div className="row">
                     <div className="col-md-7">
                     </div>
-                    <div className="col-md-4 border border-primary rounded bg-white shadow" style={{width:"350px",margin:"0 5% 0 5%"}}>
-                      <div class={login}>
+                    <div className="col-md-4 border border-primary rounded bg-white shadow" style={{width:"350px",margin:"0 5% 0 5%",padding:"0 2% 0 2%"}}>
+                      <div  className={login}>
                         <h1 className="text-primary" style={{padding:"10px 0 0 0"}}><strong>Login</strong></h1>
                         <hr style={{color: "green"}}/>
                         
@@ -123,15 +124,19 @@ export let Login = (props) => {
 
                           <div className="mb-4">
                                 <strong>Password</strong>
-                            <div class="row">  
-                              <div class="col-10 mt-2">
-                                <input type={showPassword ? "text" : "password"} className="form-control" name="pwd" id="pwd" placeholder="Enter your Password" onChange={(event) => setPassword(event.target.value)}/>
-                              </div>
-                              <div class="col-2 text-start my-auto">
-                                <span>
-                                  <FontAwesomeIcon icon={showPassword ? faEyeSlash : faEye}
-                                    onClick={() => setShowPassword(!showPassword)} />
-                                </span>
+                            <div  className="row">  
+                              <div  className="col-10 mt-2 input-group">
+                                <input type={showPassword ? "text" : "password"} 
+                                      className="form-control" name="pwd" id="pwd" 
+                                      placeholder="Enter your Password" 
+                                      onChange={(event) => setPassword(event.target.value)}/>
+                                <button type="button"  className="btn btn-outline-secondary"
+                                  onClick={() => setShowPassword(!showPassword)}
+                                  style={{ height: "100%", display: "flex", alignItems: "center" }}>
+                                      <FontAwesomeIcon
+                                        icon={showPassword ? faEyeSlash : faEye}
+                                        style={{ width: "20px" }}/>
+                                </button>
                               </div>
                             </div>
                           </div>
@@ -139,6 +144,7 @@ export let Login = (props) => {
                         &ensp;&emsp;
                         <button type="reset" className="btn btn-primary mb-3" style={{width:"120px"}} onClick={()=>{setErrorMsg("")}}>Clear</button>
                         </form>
+
                       </div>
 {/* **************************************************************************************************************************** */}
                       <div className={fpass}>
@@ -158,30 +164,36 @@ export let Login = (props) => {
 
                             <div className="mb-3">
                                   <strong>New Password</strong>
-                              <div class="row">
-                                <div class="col-10 my-auto">
-                                  <input type={showPassword ? "text" : "password"} className="form-control" name="pwd" id="pwd" value={pwd} onChange={(event) => setPassword(event.target.value)}/>
-                                </div>
-                                <div class="col-2 text-start my-auto">
-                                  <span>
-                                    <FontAwesomeIcon icon={showPassword ? faEyeSlash : faEye}
-                                      onClick={() => setShowPassword(!showPassword)} />
-                                  </span>
+                              <div  className="row">
+                                <div  className="col-10 input-group">
+                                  <input type={showPassword ? "text" : "password"} 
+                                        className="form-control" name="pwd" id="pwd" value={pwd} 
+                                        onChange={(event) => setPassword(event.target.value)}/>
+                                  <button type="button"  className="btn btn-outline-secondary"
+                                    onClick={() => setShowPassword(!showPassword)}
+                                    style={{ height: "100%", display: "flex", alignItems: "center" }}>
+                                        <FontAwesomeIcon
+                                          icon={showPassword ? faEyeSlash : faEye}
+                                          style={{ width: "20px" }}/>
+                                  </button>
                                 </div>
                               </div>
                             </div>
 
                             <div className="mb-4">
                                   <strong>Confirm Password</strong>
-                              <div class="row">
-                                <div class="col-10 my-auto">
-                                  <input type={showPassword2 ? "text" : "password"} className="form-control" name="cnfpwd" id="cnfpwd" value={cnfpwd} onChange={(event) => setCnfPassword(event.target.value)}/>
-                                </div>
-                                <div class="col-2 text-start my-auto">
-                                  <span>
-                                    <FontAwesomeIcon icon={showPassword2 ? faEyeSlash : faEye}
-                                      onClick={() => setShowPassword2(!showPassword2)} />
-                                  </span>
+                              <div  className="row">
+                                <div  className="col-10 input-group">
+                                  <input type={showPassword2 ? "text" : "password"} 
+                                        className="form-control" name="cnfpwd" id="cnfpwd" value={cnfpwd} 
+                                        onChange={(event) => setCnfPassword(event.target.value)}/>             
+                                  <button type="button"  className="btn btn-outline-secondary"
+                                    onClick={() => setShowPassword2(!showPassword2)}
+                                    style={{ height: "100%", display: "flex", alignItems: "center" }}>
+                                        <FontAwesomeIcon
+                                          icon={showPassword2 ? faEyeSlash : faEye}
+                                          style={{ width: "20px" }}/>
+                                  </button>
                                 </div>
                               </div>
                             </div>
@@ -193,7 +205,7 @@ export let Login = (props) => {
                       </div>
 {/* **************************************************************************************************************************** */}
                       <div>
-                          <button type="button" className="btn btn-outline-dark pb-2 mb-2 mt-3" 
+                          <button type="button" className="btn btn-outline-secondary pb-2 mb-2 mt-3" 
                                   onClick={() => {
                                                     if (login === "") {
                                                       setFpMSG("Go back to LOGIN"); 

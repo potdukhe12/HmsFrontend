@@ -1,7 +1,11 @@
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
 
-import { Login } from './components/user/Newlogin';
+// import { Login } from './components/user/Newlogin';
+// import { Login } from './components/user/Login';
+import { Login } from './components/user/Login2';
+
+
 import { Home } from './components/common/Home';
 import Footer from './components/common/Footer';
 import { Patienthome } from './components/patient/Patienthome';
@@ -18,11 +22,12 @@ import { FourOFour } from './components/common/NotFound';
 import { Hospitalcontrol } from './components/admin/Hospitalcontrol';
 import { Treatmentcontrol } from './components/admin/Treatmentcontrol';
 import { Aboutus } from './components/common/Aboutus';
+import LogoutComp from './components/user/LogoutComp';
 
 function App() {
 
-  const path = "http://13.233.197.160:8080";
-  // const path = "http://localhost:8080";
+  // const path = "http://13.233.197.160:8080";
+  const path = "http://localhost:8080";
 
   return (
     <div className="App">
@@ -32,6 +37,7 @@ function App() {
         <Route path='home' element={<Home p={path}></Home>}></Route>
         <Route path='footer' element={<Footer></Footer>}></Route>
         <Route path='login' element={<Login p={path}></Login>}></Route>
+        <Route path='logout' element={<LogoutComp />}></Route>
         <Route path='signup' element={<SignupUser p={path}></SignupUser>}></Route>
         <Route path='patient-home' element={<Patienthome p={path}></Patienthome>}></Route>
         <Route path='doctor-home' element={<Doctorhome p={path}></Doctorhome>}></Route>
