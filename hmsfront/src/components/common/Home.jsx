@@ -41,9 +41,7 @@ return (
                     </div>
                 </div>
             <div style={{padding:"40px"}}>
-Sample Data:
-Login	 = Patient@1
-Password = Patient@1
+
             </div>
             </div>
             <Footer></Footer>

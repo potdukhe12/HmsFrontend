@@ -43,75 +43,7 @@ return (
                             </div>
                         </div>
                     </div>
-                    <div className="row">
-                        <div className="col-5">
-                            <p>
-                                <FontAwesomeIcon icon={faLinkedin} /> 
-                                <a href='https://www.linkedin.com/in/gaurav-urkude-74b310261/'> Gaurav Urkude</a>
-                            </p>
-                        </div>
-                        <div className="col-7">
-                            <div className="row">
-                            <div className="col-md-3">
-                                <p>
-                                    <FontAwesomeIcon icon={faGithub} />
-                                    <a href='https://github.com/gauravurkude'> Github</a><br/>
-                                </p>
-                            </div>
-                            <div className="col-md-9 text-start">
-                                <p>
-                                    <FontAwesomeIcon icon={faEnvelope} /> gsurkude10@gmail.com
-                                </p>
-                            </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="row">
-                        <div className="col-5">
-                            <p>
-                                <FontAwesomeIcon icon={faLinkedin} /> 
-                                <a href='https://github.com/ajaybhosle1212'> Ajay Bhosle </a>
-                            </p>
-                        </div>
-                        <div className="col-7">
-                            <div className="row">
-                            <div className="col-md-3">
-                                <p>
-                                    {/* <FontAwesomeIcon icon={faGithub} />
-                                        <a href=''>Github</a><br/> */}
-                                </p>
-                            </div>
-                            <div className="col-md-9 text-start">
-                                <p>
-                                    <FontAwesomeIcon icon={faEnvelope} /> ajay.bhosle15@vit.edu
-                                </p>
-                            </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="row">
-                        <div className="col-5">
-                            <p>
-                                <FontAwesomeIcon icon={faLinkedin} /> 
-                                <a href='https://github.com/atharva-suryavanshi'> Atharv Suryavanshi</a>
-                            </p>
-                        </div>
-                        <div className="col-7">
-                            <div className="row">
-                            <div className="col-md-3">
-                                <p>
-                                    {/* <FontAwesomeIcon icon={faGithub} />
-                                        <a href=''>Github</a><br/> */}
-                                </p>
-                            </div>
-                            <div className="col-md-9 text-start">
-                                <p>
-                                    <FontAwesomeIcon icon={faEnvelope} /> atharvssnew1234@gmail.com
-                                </p>
-                            </div>
-                            </div>
-                        </div>
-                    </div>
+                    
                 </div>
                     <div className="col-md-3">
                         <h5 className="headin5_amrc col_white_amrc pt2">Quick links</h5>
