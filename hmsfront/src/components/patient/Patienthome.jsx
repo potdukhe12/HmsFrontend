@@ -128,6 +128,12 @@ export let Patienthome = (props) => {
                                                             setIcon(<BsFillPencilFill></BsFillPencilFill>); setProf("col-md-8"); setUpdt("collapse");
                                                         }
                                                     }}>{icon}</button>
+                                                    <br /><br />
+                                                    <button type="button" className="btn btn-outline-dark pb-2 mb-5"
+                                                        onClick={() => {  navigate("../routine") }}
+                                                        >
+                                                        My Daily Routine
+                                                    </button>
                                                 </div>
                                             </div>
                                             <div className={prof}>
@@ -138,17 +144,26 @@ export let Patienthome = (props) => {
                                                         <hr className="mt-1" />
                                                         <div style={{ textAlign: "left" }}>
                                                             <div className="row">
-                                                                <div className="col">
+                                                                <div className="col-3">
                                                                     <p>Age:</p>
                                                                 </div>
-                                                                <div className="col">
+                                                                <div className="col-2">
                                                                     <p><strong><em>{age}</em></strong></p>
                                                                 </div>
-                                                                <div className="col">
+                                                                <div className="col-4">
                                                                     <p>Gender:</p>
                                                                 </div>
-                                                                <div className="col">
+                                                                <div className="col-3">
                                                                     <p><strong><em>{uid["pid"]["gender"]}</em></strong></p>
+                                                                </div>
+                                                                <div className="col-5">
+                                                                    <p>Blood Group:</p>
+                                                                </div>
+                                                                <div className="col">
+                                                                    <p><strong><em>AB -ve</em></strong></p>
+                                                                </div>
+                                                                <div className="col">
+                                                                    <a href="https://www.justdial.com/Pune/Blood-Banks/nct-10049054">Blood Bank</a>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -186,6 +201,27 @@ export let Patienthome = (props) => {
                                                                 </div>
                                                             </div>
                                                         </div>
+                                                        <br />
+                                                        <h6 style={{ textAlign: "left" }}>Guardian Details:</h6>
+                                                        <hr className="mt-1" />
+                                                        <div style={{ textAlign: "left" }}>
+                                                            <div className="row">
+                                                                <div className="col">
+                                                                    <p><strong><em>Satish (Son)</em></strong></p>
+                                                                </div>
+                                                                <div className="col">
+                                                                    <p><strong><em>+91 555 2288</em></strong></p>
+                                                                </div>
+                                                            </div>
+                                                            <div className="row">
+                                                                <div className="col">
+                                                                    <p><strong><em>Gayatri (Daughter)</em></strong></p>
+                                                                </div>
+                                                                <div className="col">
+                                                                    <p><strong><em>+91 666 2568</em></strong></p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -201,7 +237,7 @@ export let Patienthome = (props) => {
                             <div className="mt-3">
                                 <div className="card">
                                     <div className="card-body">
-                                        <h4 className="card-title">Current Appointments <BsCalendarEvent></BsCalendarEvent></h4>
+                                        <h4 className="card-title">Upcoming Appointments <BsCalendarEvent></BsCalendarEvent></h4>
                                     </div>
                                     <ul className="list-group list-group-flush" style={{ maxHeight: "314px", overflowY: "scroll" }}>
                                         {

@@ -18,6 +18,8 @@ import { Hospitalhome } from './components/hospital/Hospitalhome';
 import { Doctorview } from './components/hospital/Doctorview';
 
 import { Adminhome } from './components/admin/Adminhome';
+import { Sos } from './components/common/Sos';
+import { Routine } from './components/common/Routine';
 import { FourOFour } from './components/common/NotFound';
 import { Hospitalcontrol } from './components/admin/Hospitalcontrol';
 import { Treatmentcontrol } from './components/admin/Treatmentcontrol';
@@ -26,8 +28,8 @@ import { Aboutus } from './components/common/Aboutus';
 
 function App() {
 
-  const path = "http://13.233.197.160:8080";
-  // const path = "http://localhost:8080";
+  // const path = "http://13.233.197.160:8080";
+  const path = "http://localhost:8080";
 
   return (
     <div className="App">
@@ -50,6 +52,8 @@ function App() {
         <Route path='hospital-home' element={<Hospitalhome p={path}></Hospitalhome>}></Route>
         <Route path='admin-home' element={<Adminhome p={path}></Adminhome>}></Route>
         <Route path='*' element={<FourOFour p={path}></FourOFour>}></Route>
+        <Route path='sos' element={<Sos p={path}></Sos>}></Route>
+        <Route path='routine' element={<Routine p={path}></Routine>}></Route>
         <Route path='about-us' element={<Aboutus p={path}></Aboutus>}></Route>
 
       </Routes>

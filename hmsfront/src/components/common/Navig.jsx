@@ -65,6 +65,11 @@ export let Navig = (props) => {
             <ul className="navbar-nav">
               <li className="nav-item">
               </li>
+              <li className="nav-item" style={{backgroundColor: !isNavCollapsed ? 'red' : 'red', borderRadius: "10px", margin: !isNavCollapsed ? "0 150px 3px 0" : '0 10px 0 0'}}>
+                <a className="nav-link" href="./sos">
+                  <h4 style={{color: 'white'}}>Emergency</h4>
+                </a>
+              </li>
               {!isHome && (
                   <>
                     <li className="nav-item" style={{backgroundColor: !isNavCollapsed ? '#263238' : 'none', borderRadius: !isNavCollapsed ? "10px" : '0', margin: !isNavCollapsed ? "0 150px 3px 0" : '0 10px 0 0'}}>
