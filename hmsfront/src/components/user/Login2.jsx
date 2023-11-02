@@ -23,8 +23,8 @@ export let Login = (props) => {
 /* Using Reducer to store login information */
 
 const init = {
-  uname: "",
-  pwd: ""
+  uname: "Patient@1",
+  pwd: "Patient@1"
 }
 
 const reducer = ( state, action ) => {
