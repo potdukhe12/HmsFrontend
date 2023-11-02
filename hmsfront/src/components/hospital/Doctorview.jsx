@@ -21,7 +21,7 @@ export let Doctorview = (props) => {
     var ageDate = new Date(ageDifMs); // miliseconds from epoch
     const age = Math.abs(ageDate.getUTCFullYear() - 1970);
 
-    const prof = useState("col-md-8");
+    // const prof = useState("col-md-8");
     // const [updt, setUpdt] = useState("collapse");
     // const [but, setBut] = useState("button");
     // const [icon, setIcon] = useState(<BsFillPencilFill></BsFillPencilFill>);

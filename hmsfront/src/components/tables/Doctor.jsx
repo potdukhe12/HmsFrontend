@@ -27,7 +27,7 @@ export let Doctor = (props) => {
                                 <div class="container-fluid">
                                     <div class="row">
                                         <div class="col-md-6">
-                                            <img src={docimg} style={{height:"190px"}}/>
+                                            <img src={docimg} style={{height:"190px"}} alt=""/>
                                         </div>
                                         <div class="col-md-6 mt-2" style={{ paddingLeft: "50px" }}>
                                             <h4 class="card-title" style={{ textAlign: "left" }}>Doctor:</h4>

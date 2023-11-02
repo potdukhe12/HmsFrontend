@@ -46,7 +46,7 @@ export let Treatment = (props) => {
                                 <div class="container-fluid">
                                     <div class="row">
                                         <div class="col-md-6">
-                                            <img src={timg} style={{height:"250px"}}/>
+                                            <img src={timg} style={{height:"250px"}} alt="" />
                                         </div>
                                         <div class="col-md-6 mt-3">
                                             <h4 class="card-title" style={{ textAlign: "left" }}>Treatment: {treat["treat"]["tname"]}</h4>

@@ -6,7 +6,7 @@ import bgimg from "../../img/bg2.jpg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import "./Login.css";
-import { useDispatch } from "react-redux";
+// import { useDispatch } from "react-redux";
 
 export let Login = (props) => {
   // const [uname, setUsername] = useState("");
@@ -33,6 +33,8 @@ const reducer = ( state, action ) => {
     case 'update':
         return { ...state, [action.fld] : action.val }
     case 'reset':
+        return init;
+    default:
         return init;
   }
 }

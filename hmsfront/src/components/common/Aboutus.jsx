@@ -10,7 +10,7 @@ import img1 from "../../img/img1.jpg";
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
-import { BsAlignStart } from 'react-icons/bs';
+// import { BsAlignStart } from 'react-icons/bs';
 import { faAlignLeft } from '@fortawesome/free-solid-svg-icons';
 
 export let Aboutus = () => {
@@ -18,7 +18,7 @@ export let Aboutus = () => {
 
     const line1Ref = useRef(null);
     const line2Ref = useRef(null);
-    const line3Ref = useRef(null);
+    // const line3Ref = useRef(null);
     const line4Ref = useRef(null);
     const line5Ref = useRef(null);
   

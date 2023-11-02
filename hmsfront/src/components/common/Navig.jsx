@@ -1,7 +1,7 @@
 import { useLocation } from "react-router-dom";
 import logo from "../../img/logonav.png";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import "./Navig.css";
 import 'bootstrap/dist/css/bootstrap.min.css';
 // import 'bootstrap/dist/js/bootstrap.bundle.min.js';

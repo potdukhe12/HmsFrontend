@@ -44,7 +44,7 @@ export let Hospitalcontrol = (props) => {
                                 <div class="container-fluid">
                                     <div class="row">
                                     <div class="col-md-6">
-                                            <img src={hosimg} style={{height:"190px"}}/>
+                                            <img src={hosimg} style={{height:"190px"}} alt="hosimg"/>
                                         </div>
                                         <div class="col-md-6 mt-3" style={{ paddingLeft: "50px" }}>
                                             <h4 class="card-title" style={{ textAlign: "left" }}>Hospital:</h4>
