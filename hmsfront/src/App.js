@@ -28,7 +28,7 @@ import { Aboutus } from './components/common/Aboutus';
 
 function App() {
 
-  const path = "http://3.110.177.253:8080";
+  const path = "http://15.206.205.126:8080";
   // const path = "http://localhost:8080";
 
   return (
